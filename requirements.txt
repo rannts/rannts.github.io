@@ -1,0 +1,3 @@
+# Requirements for rannts static website
+
+webassets == 0.11.1
