@@ -1,0 +1,65 @@
+// rannts specific SASS
+
+// Variables
+$link-color-normal: #148bbd
+$link-color-hover: #bd141c
+$rannts-font-size: 1.2em
+
+
+// Mixins
+=rannts-link-color($color)
+  color: $color
+  border-color: rgba($color, 0.3)
+
+
+// Styles
+
+
+.nav-main
+  .is-active
+    text-decoration: underline
+  a.nav-item:hover
+    text-decoration: underline
+
+
+.footer
+  font-size: $rannts-font-size
+
+  .level-left
+    a
+      text-decoration: none
+      border-bottom-width: 0
+
+
+.nav-main
+  font-size: $rannts-font-size
+
+
+#logo
+  font-family: "Lato", sans-serif
+  font-size: calc(#{rannts-font-size} * 2)
+
+  a
+    text-decoration: none
+
+.section
+  .content
+    font-size: $rannts-font-size
+
+    a
+      +rannts-link-color($link-color-normal)
+      &:hover
+        +rannts-link-color($link-color-hover)
+    code
+      background-color: #fff6cd
+      padding: 0 5px
+      color: $grey-darker
+
+    .title
+      font-size: 1.8em
+      font-weight: normal
+      margin-bottom: 0.3em
+    .subtitle
+      margin-top: 0
+      font-size: 1em
+      color: $grey-dark
