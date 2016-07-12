@@ -13,3 +13,8 @@ bundles:
         AUTOPREFIXER_BIN: autoprefixer-cli
       contents:
         - sass/main.sass
+    js:
+      filters: uglifyjs
+      output: output/js/main.js
+      contents:
+        - js/rannts.js

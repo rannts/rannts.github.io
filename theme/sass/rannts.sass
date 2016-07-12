@@ -11,6 +11,11 @@ $rannts-font-size: 1.2em
   color: $color
   border-color: rgba($color, 0.3)
 
+=rannts-hero-bg($picture, $opacity: 0.8)
+  background-image: url("../../images/#{$picture}")
+  background-repeat: repeat
+  opacity: $opacity
+
 
 // Styles
 
@@ -37,10 +42,11 @@ $rannts-font-size: 1.2em
 
 #logo
   font-family: "Lato", sans-serif
-  font-size: calc(#{rannts-font-size} * 2)
+  font-size: 2.2em
 
   a
     text-decoration: none
+
 
 .section
   .content
@@ -63,3 +69,27 @@ $rannts-font-size: 1.2em
       margin-top: 0
       font-size: 1em
       color: $grey-dark
+
+.hero
+  .hero-body
+    .title
+      font-size: 3em
+
+    .subtitle
+      font-size: 1em
+
+.is-meetup
+  @extend .is-dark
+  +rannts-hero-bg("meetup-bg.png")
+
+.is-news
+  @extend .is-dark
+  +rannts-hero-bg("news-bg.png")
+
+.is-information
+  @extend .is-dark
+  +rannts-hero-bg("information-bg.png")
+
+.is-people
+  @extend .is-dark
+  +rannts-hero-bg("people-bg.gif")

@@ -7,9 +7,18 @@ url: /static
 
 bundles:
     stylesheet:
-      filters: sass,autoprefixer,cleancss
+      filters: sass,autoprefixer
       output: output/css/main.css
       config:
         AUTOPREFIXER_BIN: autoprefixer-cli
       contents:
         - sass/main.sass
+    js:
+      filters: uglifyjs
+      output: output/js/main.js
+      config:
+        UGLIFYJS_EXTRA_ARGS:
+            - "--mangle"
+            - "--mangle-props 2"
+      contents:
+        - js/rannts.js

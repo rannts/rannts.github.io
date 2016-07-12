@@ -1,13 +1,18 @@
 <html lang="ru">
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <title>rannts</title>
+
         <link rel="stylesheet" href="output/css/main.css" >
         <link href="https://fonts.googleapis.com/css?family=Fira+Mono:400,700|Fira+Sans:400,400i,700,700i|Lato:700&subset=cyrillic,cyrillic-ext" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <script type="text/javascript" src="output/js/main.js"></script>
     </head>
     <body>
-        <section class="hero is-dark is-medium">
+        <section class="hero is-news is-medium">
             <div class="hero-head">
                 <nav class="nav nav-main">
                     <div class="container">
@@ -34,30 +39,28 @@
                 <div class="container">
                     <!-- <h1 class="title">Новости</h1> -->
                     <!-- <h2 class="subtitle">Для тех, кто читает новости</h2> -->
-                    <!-- <h1 class="title">Люди</h1> -->
-                    <!-- <h2 class="subtitle">Все те, без кого бы мы не собрались</h2> -->
-                    <!-- <h1 class="title">Митапы</h1> -->
-                    <!-- <h2 class="subtitle">Хахатоны и бухкэмпы</h2> -->
-                    <h1 class="title">rannts#11</h1>
-                    <h2 class="subtitle">25.08.2016 @ Premio</h2>
+                    <h1 class="title">Люди</h1>
+                    <h2 class="subtitle">Все те, без кого бы мы не собрались</h2>
+                    <!-- <h1 class="title">#11</h1> -->
+                    <!-- <h2 class="subtitle">25.08.2016 @ Premio</h2> -->
                     <!-- <h1 class="title">Информация</h1> -->
                     <!-- <h2 class="subtitle">Разные умные слова для участников, HR'ов и сочувствующих</h2> -->
                 </div>
             </div>
             <div class="hero-foot">
-                <nav class="tabs">
+                <nav class="tabs section-tabs">
                     <div class="container">
                         <ul>
-                            <li class="is-active"><a href="#">О митапе</a></li>
-                            <li><a href="#">Доклады</a></li>
-                            <li><a href="#">Место проведения</a></li>
+                            <li class="is-active"><a section="about">О митапе</a></li>
+                            <li><a section="talks">Доклады</a></li>
+                            <li><a section="place">Место проведения</a></li>
                         </ul>
                     </div>
                 </nav>
             </div>
         </section>
 
-        <section class="section section-item">
+        <section id="section-tabs-about" class="section section-item">
             <div class="container">
                 <div class="content">
                     <h1 class="title">Новый митап</h2>
@@ -78,7 +81,7 @@ There are many variations of passages of Lorem Ipsum available, but the majority
             </div>
         </section>
 
-        <section class="section section-item">
+        <section id="section-tabs-talks" class="section section-item">
             <div class="container">
                 <div class="content">
                     <h1 class="title">Новый митап</h2>

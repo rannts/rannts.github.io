@@ -2,3 +2,4 @@
 
 webassets == 0.11.1
 pyyaml == 3.11
+lektor == 2.3
