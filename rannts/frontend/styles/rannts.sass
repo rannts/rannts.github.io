@@ -1,0 +1,95 @@
+// rannts specific SASS
+
+// Variables
+$link-color-normal: #148bbd
+$link-color-hover: #bd141c
+$rannts-font-size: 1.2em
+
+
+// Mixins
+=rannts-link-color($color)
+  color: $color
+  border-color: rgba($color, 0.3)
+
+=rannts-hero-bg($picture, $opacity: 0.8)
+  background-image: url("../../images/#{$picture}")
+  background-repeat: repeat
+  opacity: $opacity
+
+
+// Styles
+
+
+.nav-main
+  .is-active
+    text-decoration: underline
+  a.nav-item:hover
+    text-decoration: underline
+
+
+.footer
+  font-size: $rannts-font-size
+
+  .level-left
+    a
+      text-decoration: none
+      border-bottom-width: 0
+
+
+.nav-main
+  font-size: $rannts-font-size
+
+
+#logo
+  font-family: "Lato", sans-serif
+  font-size: 2.2em
+
+  a
+    text-decoration: none
+
+
+.section
+  .content
+    font-size: $rannts-font-size
+
+    a
+      +rannts-link-color($link-color-normal)
+      &:hover
+        +rannts-link-color($link-color-hover)
+    code
+      background-color: #fff6cd
+      padding: 0 5px
+      color: $grey-darker
+
+    .title
+      font-size: 1.8em
+      font-weight: normal
+      margin-bottom: 0.3em
+    .subtitle
+      margin-top: 0
+      font-size: 1em
+      color: $grey-dark
+
+.hero
+  .hero-body
+    .title
+      font-size: 3em
+
+    .subtitle
+      font-size: 1em
+
+.is-meetup
+  @extend .is-dark
+  +rannts-hero-bg("meetup-bg.png")
+
+.is-news
+  @extend .is-dark
+  +rannts-hero-bg("news-bg.png")
+
+.is-information
+  @extend .is-dark
+  +rannts-hero-bg("information-bg.png")
+
+.is-people
+  @extend .is-dark
+  +rannts-hero-bg("people-bg.gif")

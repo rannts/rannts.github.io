@@ -1,0 +1,19 @@
+{
+    "items": [
+        {
+            "href": "mailto:info@rannts.ru",
+            "title": "E-Mail",
+            "icon": "fa-envelope"
+        },
+        {
+            "href": "https://vk.com/rannts",
+            "title": "ВКонтакте",
+            "icon": "fa-vk"
+        },
+        {
+            "href": "https://telegram.me/it52info",
+            "title": "Telegram",
+            "icon": "fa-paper-plane"
+        }
+    ]
+}
