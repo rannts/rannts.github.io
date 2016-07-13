@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% import "macros.html" as macros %}
+
+{% block title %}
+    #{{ this.number }} ← Митапы ← {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {% call macros.hero_block("meetups", "meetup", "#" ~ this.number, macros.meetup_subheader(this)) %}
+        <li class="is-active"><a section="about">О митапе</a></li>
+        <li><a section="talks">Доклады</a></li>
+        <li><a section="place">Место проведения</a></li>
+    {% endcall %}
+
+    <section id="section-tabs-about" class="section section-item">
+        <div class="container">
+            <div class="content">
+                {% if this.description %}
+                    {{ this.description }}
+                {% else %}
+                    <p>К сожалению, подробностей про митап пока что нет.</p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section id="section-tabs-talks" class="section section-item">
+        <div class="container">
+            <div class="content">
+                {{ macros.meetup_talks(this, True) }}
+            </div>
+        </div>
+    </section>
+
+    <section id="section-tabs-place" class="section section-item">
+        <div class="container">
+            <div class="content">
+
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

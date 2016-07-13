@@ -13,32 +13,14 @@
         <section class="section">
             <div class="container">
                 <div class="content">
-                    {{ macros.meetup_header(post) }}
+                    <h1 class="title"><a href="{{ post|url }}">#{{ post.number }}</a></h1>
+                    <h2 class="subtitle">{{ macros.meetup_subheader(post) }}</h2>
 
                     {% if post.description %}
                         {{ post.description }}
                     {% endif %}
 
-                    {% set lightning_talks = post.children.filter(F.talk_type == "lightning").all() %}
-                    {% set main_talks = post.children.filter(F.talk_type == "main").all() %}
-
-                    {% if main_talks %}
-                        <h3>Доклады</h3>
-                        {% for talk in main_talks %}
-                            <div class="columns">
-                                {{ macros.meetup_talk(talk, False) }}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-
-                    {% if lightning_talks %}
-                        <h3>Lightning Talks</h3>
-                        {% for talk in lightning_talks %}
-                            <div class="columns">
-                                {{ macros.meetup_talk(talk, False) }}
-                            </div>
-                        {% endfor %}
-                    {% endif %}
+                    {{ macros.meetup_talks(post, False) }}
                 </div>
             </div>
         </section>

@@ -57,22 +57,39 @@
 {% endmacro %}
 
 
-{% macro meetup_header(meetup) %}
-<h1 class="title"><a href="{{ meetup|url }}">#{{ meetup.number }}</a></h1>
-
-{% if meetup.date or meetup.place %}
-    <h2 class="subtitle">
-        {% if meetup.date %}
-            {{ meetup.date|datetimeformat }}
-            {% if meetup.place %}
-                @ <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
-            {% endif %}
-        {% else %}
-            Будет проходить в <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+{% macro meetup_subheader(meetup) %}
+    {% if meetup.date %}
+        {{ meetup.date|datetimeformat("d MMMM YYYY, HH:mm") }}
+        {% if meetup.place %}
+            @ <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
         {% endif %}
-    </h2>
-{% endif %}
+    {% else %}
+        Будет проходить в <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+    {% endif %}
+{% endmacro %}
 
+
+{% macro meetup_talks(meetup, expand) %}
+    {% set lightning_talks = meetup.children.filter(F.talk_type == "lightning").all() %}
+    {% set main_talks = meetup.children.filter(F.talk_type == "main").all() %}
+
+    {% if main_talks %}
+        <h3>Доклады</h3>
+        {% for talk in main_talks %}
+            <div class="columns">
+                {{ meetup_talk(talk, expand) }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if lightning_talks %}
+        <h3>Lightning Talks</h3>
+        {% for talk in lightning_talks %}
+            <div class="columns">
+                {{ meetup_talk(talk, expand) }}
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endmacro %}
 
 
@@ -86,15 +103,13 @@
     <h5>{{ talk.speaker }} ({{ talk.company }})</h5>
 
     {% if expand and talk.slides %}
-        <p class="is-small">
-            Слайды: <a href="{{ talk.slides }}">{{ talk.slides }}</a>
-        </p>
+        <p class="is-small">Слайды: <a href="{{ talk.slides }}">{{ talk.slides }}</a></p>
     {% endif%}
 
     {{ talk.description }}
 
     {% if expand and talk.video %}
-
+        <p class="is-small">Прямая ссылка на видео: <a href="{{ talk.video }}">{{ talk.video }}</a></p>
     {% endif %}
 </div>
 {% endmacro %}
