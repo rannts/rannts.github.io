@@ -11,5 +11,8 @@ setup(
         "lektor.plugins": [
             "micawber = lektor_micawber:MicawberPlugin",
         ]
-    }
+    },
+    install_requires=[
+        "micawber>=0.3.3,<0.3.4"
+    ]
 )

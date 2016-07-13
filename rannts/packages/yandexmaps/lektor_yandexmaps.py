@@ -1,39 +1,92 @@
 # -*- coding: utf-8 -*-
 
 
-import urlparse
-
 import jinja2
+import six.moves.urllib.parse as parse
 
 from lektor.pluginsystem import Plugin
 
 
-TEMPLATE = (
-    '<script type="text/javascript" charset="utf-8"'
-    'async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?'
-    'sid={constructor}&width=100%&height=500&lang=ru_RU&sourceType={source}'
-    '&scroll=true"></script>'
+EMBEDDED_CODE = (
+    '<script type="text/javascript" charset="utf-8" '
+    'async src="{url}"></script>'
 ).strip()
+"""Base for the embedded HTML code."""
 
+URL_BASE = "https://api-maps.yandex.ru/services/constructor/1.0/js/"
+"""Base URL to for embedded code API."""
 
-@jinja2.evalcontextfilter
-def parse_yandexmaps(ctx, value):
-    url = urlparse.urlparse(value.url)
-    query = urlparse.parse_qs(url.query)
-    code = TEMPLATE.format(
-        constructor=query["um"][-1].split(":")[-1],
-        source=query["source"][-1]
-    )
-    if ctx.autoescape:
-        code = jinja2.Markup(code)
-    print code
+URL_PARTS = {
+    "sid": "",
+    "width": "",
+    "height": "",
+    "lang": "",
+    "sourceType": "",
+    "scroll": ""
+}
+"""Base URL parts to constuct query string."""
 
-    return code
+DEFAULT_URL_PART_WIDTH = "100%"
+"""Default width of the widget."""
+
+DEFAULT_URL_PART_HEIGHT = "500"
+"""Default height of the widget."""
+
+DEFAULT_URL_PART_LANG = "ru_RU"
+"""Default lang code of the widget."""
+
+DEFAULT_URL_PART_SCROLL = "true"
+"""Default scroll possibility of the widget."""
 
 
 class YandexmapsPlugin(Plugin):
-    name = u'lektor-yandexmaps'
-    description = u'Parses a link on YandexMaps constructor and creates embed'
+    name = "lektor-yandexmaps"
+    description = "Parses a link on YandexMaps constructor and creates embed"
+
+    @property
+    def width(self):
+        return self.get_config().get("width", DEFAULT_URL_PART_WIDTH)
+
+    @property
+    def height(self):
+        return self.get_config().get("height", DEFAULT_URL_PART_HEIGHT)
+
+    @property
+    def lang(self):
+        return self.get_config().get("lang", DEFAULT_URL_PART_LANG)
+
+    @property
+    def scroll(self):
+        return self.get_config().get("scroll", DEFAULT_URL_PART_SCROLL)
+
+    @jinja2.evalcontextfilter
+    def make_code(self, ctx, value):
+        url = parse.urlsplit(value)
+        query = parse.parse_qs(url.query)
+        identifier = query["um"][-1].split(":")[-1]
+        source_type = query["source"][-1]
+
+        code = self.build_code(identifier, source_type)
+        if ctx.autoescape:
+            code = jinja2.Markup(code)
+
+        return code
+
+    def build_code(self, identifier, source_type):
+        url_parts = URL_PARTS.copy()
+        url_parts.update(
+            sid=identifier,
+            sourceType=source_type,
+            width=self.width,
+            height=self.height,
+            lang=self.lang,
+            scroll=self.scroll
+        )
+        query_string = parse.urlencode(url_parts)
+        script_url = "{0}?{1}".format(URL_BASE, query_string)
+        code = EMBEDDED_CODE.format(url=script_url)
+
+        return code
 
     def on_setup_env(self, **extra):
-        self.env.jinja_env.filters["yandexmaps"] = parse_yandexmaps
+        self.env.jinja_env.filters["yandexmaps"] = self.make_code

@@ -11,5 +11,8 @@ setup(
         'lektor.plugins': [
             'yandexmaps = lektor_yandexmaps:YandexmapsPlugin',
         ]
-    }
+    },
+    install_requires=[
+        "six"
+    ]
 )
