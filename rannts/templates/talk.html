@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% import "macros.html" as macros %}
+
+{% macro talk_title(talk) %}
+    {{ this.speaker }} — {{ this.title }}
+{% endmacro %}
+
+{% macro subtitle(talk) %}
+     {{ this.speaker }} @ <a href="{{ talk.parent.url_path|url }}">{{ config.values.PROJECT.name }} #{{ talk.parent.number }}</a>
+{% endmacro %}
+
+{% block title %}
+    {{ this.speaker }} — {{ this.title }} ← #{{ this.parent.number }} ← Митапы ← {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {% call macros.hero_block("meetups", "meetup", this.title, subtitle(this)) %}
+    {% endcall %}
+
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                <p></p>
+                {% if this.description %}
+                    {{ this.description }}
+                {% elif not (this.video or this.slides) %}
+                    <p>К сожалению, подробностей про выступление пока что нет.</p>
+                {% endif %}
+
+                {% if this.video %}
+                    {{ this.video.url|oembed(urlize_all=False, maxwidth=960) }}
+                {% endif %}
+
+                {% if this.slides %}
+                    <p>Слайды: <a href="{{ this.slides }}">{{ this.slides }}</a></p>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock %}
