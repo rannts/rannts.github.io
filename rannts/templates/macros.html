@@ -99,7 +99,11 @@
 </div>
 
 <div class="column">
-    <h4>{{ talk.title }}</h4>
+    {% if expand %}
+        <h4><a href="{{ talk|url }}">{{ talk.title }}</a></h4>
+    {% else%}
+        <h4>{{ talk.title }}</h4>
+    {% endif%}
     <h5>{{ talk.speaker }} ({{ talk.company }})</h5>
 
     {% if expand and talk.slides %}

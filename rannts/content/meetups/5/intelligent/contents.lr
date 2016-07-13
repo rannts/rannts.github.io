@@ -1,0 +1,15 @@
+speaker: Артем Малышев
+---
+company: F-Technology
+---
+date: 2015-03-19 18:40
+---
+description: Доклад о том, как устроено автодополнение в текстовых редакторах, как работать с библиотекой [Jedi](http://jedi.jedidjah.ch/en/latest/), а также о том, с чем пришлось столкнуться при разработке [Anaconda Mode](https://github.com/proofit404/anaconda-mode).
+---
+slides: http://www.slideshare.net/ArtemMalyshev1/intelligent-46004012
+---
+talk_type: main
+---
+title: Intelligent или сделай мне красиво
+---
+video: https://www.youtube.com/watch?v=vEMF-9nIoHA
