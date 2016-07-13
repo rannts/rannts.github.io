@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% import "macros.html" as macros %}
+
+{% block title %}
+    Митапы ← {{ super() }}
+{% endblock %}
+
+{% block content %}
+    {% call macros.hero_block("meetups", "meetup", "Митапы", "Хахатоны и бухкэмпы") %}
+    {% endcall %}
+
+    {% for post in this.pagination.items %}
+        <section class="section">
+            <div class="container">
+                <div class="content">
+                    {{ macros.meetup_header(post) }}
+
+                    {% if post.description %}
+                        {{ post.description }}
+                    {% endif %}
+
+                    {% set lightning_talks = post.children.filter(F.talk_type == "lightning").all() %}
+                    {% set main_talks = post.children.filter(F.talk_type == "main").all() %}
+
+                    {% if main_talks %}
+                        <h3>Доклады</h3>
+                        {% for talk in main_talks %}
+                            <div class="columns">
+                                {{ macros.meetup_talk(talk, False) }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% if lightning_talks %}
+                        <h3>Lightning Talks</h3>
+                        {% for talk in lightning_talks %}
+                            <div class="columns">
+                                {{ macros.meetup_talk(talk, False) }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    {% endfor %}
+{% endblock %}

@@ -23,3 +23,78 @@
     </div>
 </nav>
 {% endmacro %}
+
+
+{% macro hero_block(active_link, active_class, title, subtitle) %}
+<section class="hero is-{{ active_class }}">
+    <div class="hero-head">
+        {{ main_nav(active_link) }}
+    </div>
+
+    <div class="hero-body">
+        <div class="container">
+            {% if title %}
+                <h1 class="title">{{ title }}</h1>
+            {% endif %}
+            {% if title %}
+                <h2 class="subtitle">{{ subtitle }}</h2>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="hero-foot">
+        <nav class="tabs section-tabs">
+            <div class="container">
+                <ul>
+                    {{ caller() }}
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+</section>
+
+{% endmacro %}
+
+
+{% macro meetup_header(meetup) %}
+<h1 class="title"><a href="{{ meetup|url }}">#{{ meetup.number }}</a></h1>
+
+{% if meetup.date or meetup.place %}
+    <h2 class="subtitle">
+        {% if meetup.date %}
+            {{ meetup.date|datetimeformat }}
+            {% if meetup.place %}
+                @ <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+            {% endif %}
+        {% else %}
+            Будет проходить в <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+        {% endif %}
+    </h2>
+{% endif %}
+
+{% endmacro %}
+
+
+{% macro meetup_talk(talk, expand) %}
+<div class="column is-one-quarter">
+    {{ talk.date|datetimeformat("HH:mm") }}
+</div>
+
+<div class="column">
+    <h4>{{ talk.title }}</h4>
+    <h5>{{ talk.speaker }} ({{ talk.company }})</h5>
+
+    {% if expand and talk.slides %}
+        <p class="is-small">
+            Слайды: <a href="{{ talk.slides }}">{{ talk.slides }}</a>
+        </p>
+    {% endif%}
+
+    {{ talk.description }}
+
+    {% if expand and talk.video %}
+
+    {% endif %}
+</div>
+{% endmacro %}

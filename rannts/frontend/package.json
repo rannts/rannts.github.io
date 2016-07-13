@@ -6,6 +6,7 @@
     "cssnano": "^3.7.1",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.1",
+    "gulp-optipng": "0.0.2",
     "gulp-postcss": "^6.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",

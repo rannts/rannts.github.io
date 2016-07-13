@@ -5,14 +5,16 @@ var DESTINATION = "../assets/static",
     sass = require("gulp-sass"),
     autoprefixer = require("autoprefixer"),
     postcss = require("gulp-postcss"),
-    cssnano = require("cssnano");
+    cssnano = require("cssnano"),
+    optipng = require("gulp-optipng");
 
 
-gulp.task("default", ["bundle_js", "bundle_css"]);
+gulp.task("default", ["bundle_js", "bundle_css", "bundle_images"]);
 
 gulp.task("watch", ["default"], function() {
     gulp.watch("js/*", ["bundle_js"]);
     gulp.watch("styles/*", ["bundle_css"]);
+    gulp.watch("images/*", ["bundle_images"])
 });
 
 
@@ -40,3 +42,12 @@ gulp.task("bundle_css", function(callback) {
         .pipe(rename("main.css"))
         .pipe(gulp.dest(DESTINATION + "/css"));
 });
+
+
+gulp.task("bundle_images", function() {
+    var options = ["-o2"];
+
+    return gulp.src("images/*")
+        .pipe(optipng(options))
+        .pipe(gulp.dest(DESTINATION + "/images"));
+})
