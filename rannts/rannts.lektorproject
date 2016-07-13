@@ -7,3 +7,5 @@ url_style = absolute
 [packages]
 lektor-webpack-support = 0.1
 lektor-atom = 0.2
+lektor-micawber
+lektor-yandexmaps

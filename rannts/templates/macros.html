@@ -109,7 +109,7 @@
     {{ talk.description }}
 
     {% if expand and talk.video %}
-        <p class="is-small">Прямая ссылка на видео: <a href="{{ talk.video }}">{{ talk.video }}</a></p>
+        {{ talk.video.url|oembed(urlize_all=False, maxwidth=640)|safe }}
     {% endif %}
 </div>
 {% endmacro %}

@@ -35,6 +35,22 @@
     <section id="section-tabs-place" class="section section-item">
         <div class="container">
             <div class="content">
+              <p>Место проведения:
+                  {% if this.place %}
+                      {% if this.map_url %}
+                          <a href="{{ this.map_url }}">{{ this.place }}</a>
+                      {% else %}
+                          {{ this.place }}
+                      {% endif %}
+                  {% else %}
+                      пока что не определено.
+                  {% endif %}
+              </p>
+
+              {% if this.map_url %}
+              {{ this.map_url|yandexmaps|safe }}
+
+              {% endif %}
 
             </div>
         </div>
