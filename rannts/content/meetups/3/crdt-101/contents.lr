@@ -1,0 +1,15 @@
+speaker: Сергей Архипов
+---
+company: ASD Technologies
+---
+date: 2014-12-10 18:40
+---
+description: Рассказ о том, что такое [CRDT](https://en.wikipedia.org/wiki/Conflict-free_replicated_data_type) и как с этим всем жить.
+---
+slides: https://speakerdeck.com/9seconds/crdt-101
+---
+talk_type: main
+---
+title: CRDT 101
+---
+video: https://www.youtube.com/watch?v=jX-zk1hARyQ
