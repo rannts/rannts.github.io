@@ -1,0 +1,21 @@
+{
+    "items": [
+        {
+            "title": "Новости",
+            "url": "/news"
+        },
+        {
+
+            "title": "Митапы",
+            "url": "/meetups"
+        },
+        {
+            "title": "Люди",
+            "url": "/people"
+        },
+        {
+            "title": "Информация",
+            "url": "/info"
+        }
+    ]
+}

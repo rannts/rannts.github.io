@@ -3,13 +3,13 @@ GULP_RUN := nodejs $(GULP)
 
 # -----------------------------------------------------------------------------
 
-all: node_packages build
+all: build
 
 node_packages:
 	@npm install
 
-build:
+build: node_packages
 	@$(GULP_RUN) default
 
-watch:
+watch: node_packages
 	@$(GULP_RUN) watch

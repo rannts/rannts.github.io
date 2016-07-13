@@ -3,13 +3,14 @@
 // Variables
 $link-color-normal: #148bbd
 $link-color-hover: #bd141c
+$link-color-visited: #bd14a7
 $rannts-font-size: 1.2em
 
 
 // Mixins
 =rannts-link-color($color)
   color: $color
-  border-color: rgba($color, 0.3)
+  border-bottom: 1px rgba($color, 0.3) solid
 
 =rannts-hero-bg($picture, $opacity: 0.8)
   background-image: url("../../images/#{$picture}")
@@ -52,15 +53,6 @@ $rannts-font-size: 1.2em
   .content
     font-size: $rannts-font-size
 
-    a
-      +rannts-link-color($link-color-normal)
-      &:hover
-        +rannts-link-color($link-color-hover)
-    code
-      background-color: #fff6cd
-      padding: 0 5px
-      color: $grey-darker
-
     .title
       font-size: 1.8em
       font-weight: normal
@@ -69,6 +61,18 @@ $rannts-font-size: 1.2em
       margin-top: 0
       font-size: 1em
       color: $grey-dark
+
+    a
+      +rannts-link-color($link-color-normal)
+      &:visited
+        +rannts-link-color($link-color-visited)
+      &:hover
+        +rannts-link-color($link-color-hover)
+
+    code
+      background-color: #fff6cd
+      padding: 0 5px
+      color: $grey-darker
 
 .hero
   .hero-body
@@ -93,3 +97,28 @@ $rannts-font-size: 1.2em
 .is-people
   @extend .is-dark
   +rannts-hero-bg("people-bg.gif")
+
+.main-page
+  .title
+    font-size: 2em
+    margin-bottom: 1.8em
+
+  .content
+    font-size: 1em
+    margin-bottom: 3em
+
+    .subtitle
+      color: $grey-light
+
+#main-page-meetups
+  .subtitle
+    a
+      +rannts-link-color(rgba($link-color-normal, 0.5))
+      &:visited
+        +rannts-link-color(rgba($link-color-visited, 0.5))
+      &:hover
+        +rannts-link-color($link-color-hover)
+
+  .delimiter
+    font-size: 2em
+    margin-bottom: 0.8em

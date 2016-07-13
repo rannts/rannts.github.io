@@ -1,0 +1,25 @@
+{% macro main_nav(active) %}
+<nav class="nav nav-main">
+    <div class="container">
+        <div id="logo" class="nav-left">
+            <a class="nav-item" href="/" title="На главную">
+              <h1>{{ config.values.PROJECT.name }}</h1>
+            </a>
+        </div>
+
+        <span class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+
+        <div class="nav-right nav-mobile">
+            {% for item in bag("main-nav")["items"] %}
+                <a class="nav-item{% if item.url == "/" + active %} is-active{% endif %}" href="{{ item.url|url }}" title="{{ item.title }}">
+                    {{ item.title }}
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</nav>
+{% endmacro %}
