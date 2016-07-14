@@ -106,8 +106,8 @@
     {% endif%}
     <h5>{{ talk.speaker }} ({{ talk.company }})</h5>
 
-    {% if expand and talk.slides %}
-        <p class="is-small">Слайды: <a href="{{ talk.slides }}">{{ talk.slides }}</a></p>
+    {% if expand and talk.slides and talk.slides.url %}
+        {{ slides_widget(talk) }}
     {% endif%}
 
     {{ talk.description }}
@@ -120,10 +120,17 @@
 
 
 {% macro registration_widget(meetup) %}
-    {% if meetup.registration_url and not meetup.finished %}
+    {% if meetup.registration_url and meetup.registration_url.url and not meetup.finished %}
         <p class="meetup-registration-link">
             Форма регистрации:
-            <a href="{{ meetup.registration_url }}">{{ meetup.registration_url }}</a>
+            <a href="{{ meetup.registration_url.url }}">{{ meetup.registration_url.url }}</a>
         </p>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro slides_widget(talk, slides_class="is-small") %}
+    {% if talk.slides and talk.slides.url %}
+        <p class="{{ slides_class }}">Слайды: <a href="{{ talk.slides.url }}">{{ talk.slides.url }}</a></p>
     {% endif %}
 {% endmacro %}

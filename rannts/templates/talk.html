@@ -20,13 +20,11 @@
     <section class="section">
         <div class="container">
             <div class="content">
-                {% if this.slides %}
-                    <p class="meetup-slides">Слайды: <a href="{{ this.slides }}">{{ this.slides }}</a></p>
-                {% endif %}
+                {{ macros.slides_widget(this, "meetup-slides") }}
 
                 {% if this.description %}
                     {{ this.description }}
-                {% elif not (this.video or this.slides) %}
+                {% elif not (this.video or (this.slides and this.slides.url)) %}
                     <p>К сожалению, подробностей про выступление пока что нет.</p>
                 {% endif %}
 

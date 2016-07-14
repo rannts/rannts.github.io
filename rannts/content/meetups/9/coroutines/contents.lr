@@ -1,0 +1,15 @@
+speaker: Александр Мокров
+---
+company: Positive Technologies
+---
+date: 2016-03-19 15:30
+---
+description: Речь пойдет о сопрограммах и генераторах. О самой концепции, как связаны между собой, в каком виде появились в Python и как в дальнейшем эволюционировали, от простых генераторов до сопрограмм c `async` и `await` синтаксисом.
+---
+slides: http://www.slideshare.net/AleksandrMokrov/coroutines
+---
+talk_type: main
+---
+title: Концепция сопрограмм
+---
+video: https://www.youtube.com/watch?v=Oy8Vm_IhrSc
