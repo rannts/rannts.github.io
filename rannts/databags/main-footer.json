@@ -14,6 +14,11 @@
             "href": "https://telegram.me/it52info",
             "title": "Telegram",
             "icon": "fa-paper-plane"
+        },
+        {
+            "href": "http://creativecommons.org/licenses/by-nc-sa/3.0",
+            "title": "CC BY-NC-SA 3.0",
+            "icon": "fa-creative-commons"
         }
     ]
 }

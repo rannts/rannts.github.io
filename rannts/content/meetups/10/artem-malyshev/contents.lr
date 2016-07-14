@@ -1,0 +1,15 @@
+speaker: Артем Малышев
+---
+company: Positive Technologies
+---
+date: 2016-04-23 15:20
+---
+description: Доклад об очень мощной технике из функциональных языков программирования. Рассказ о том, откуда она пришла, в каком виде сейчас существует и как реализовать её в Python.
+---
+slides: http://proofit404.github.io/talks/pattern-matching-in-python
+---
+talk_type: main
+---
+title: Pattern Matching в Python
+---
+video: https://www.youtube.com/watch?v=b9qY7AOqnQ0

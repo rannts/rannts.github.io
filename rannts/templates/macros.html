@@ -104,7 +104,13 @@
     {% else%}
         <h4>{{ talk.title }}</h4>
     {% endif%}
-    <h5>{{ talk.speaker }} ({{ talk.company }})</h5>
+    <h5>
+        {{ talk.speaker }}
+        {% if talk.company %}
+            ({{ talk.company }})
+        {% endif %}
+    </h5>
+
 
     {% if expand and talk.slides and talk.slides.url %}
         {{ slides_widget(talk) }}
