@@ -1,0 +1,19 @@
+speaker: Артем Малышев
+---
+company: Positive Technologies
+---
+date: 2015-12-07 20:00
+---
+description:
+
+Как не превратить свой проект в груду урлов? Как не потерять расширяемость с ростом кодовой базы? Как писать поддерживаемый код? Об этих проблемах и их возможных решениях на примере Django расскажет и покажет Малышев Артем.
+
+Доклад был впервые представлен на [Moscow Django Meetup](http://www.moscowpython.ru/meetup/30/geksagonalnaja-arhitektura-v-prilozhenijah-django/) 19 ноября 2015 г.
+---
+slides: http://proofit404.github.io/talks/hexagonal-django/#/
+---
+talk_type: main
+---
+title: Гексагональная архитектура в приложениях Django
+---
+video: https://www.youtube.com/watch?v=tthk-ULI7lg
