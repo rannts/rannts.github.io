@@ -1,0 +1,15 @@
+speaker: Николай Телепенин
+---
+company: ASD Technologies
+---
+date: 2015-06-25 18:00
+---
+description: Попробуем разобраться как читать планы запросов, как они работают внутри, почему иногда какие-то индексы работают, а какие-то нет и какие параметры на это влияют
+---
+slides: http://share.snacktools.com/98CE8D9A9F7/b7nqdee8
+---
+talk_type: main
+---
+title: Understanding EXPLAIN in PostgreSQL
+---
+video: https://www.youtube.com/watch?v=yIQoO07im8E
