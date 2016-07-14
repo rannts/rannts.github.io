@@ -15,6 +15,8 @@
     <section id="section-tabs-about" class="section section-item">
         <div class="container">
             <div class="content">
+                {{ macros.registration_widget(this) }}
+
                 {% if this.description %}
                     {{ this.description }}
                 {% else %}

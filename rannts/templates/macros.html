@@ -117,3 +117,13 @@
     {% endif %}
 </div>
 {% endmacro %}
+
+
+{% macro registration_widget(meetup) %}
+    {% if meetup.registration_url and not meetup.finished %}
+        <p class="meetup-registration-link">
+            Форма регистрации:
+            <a href="{{ meetup.registration_url }}">{{ meetup.registration_url }}</a>
+        </p>
+    {% endif %}
+{% endmacro %}
