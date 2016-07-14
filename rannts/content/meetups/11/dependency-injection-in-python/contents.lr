@@ -1,0 +1,15 @@
+speaker: Артем Малышев
+---
+company: Positive Technologies
+---
+date: 2016-06-25 18:00
+---
+description: Рассказ о методах и подходах к [DI](https://en.wikipedia.org/wiki/Dependency_injection) в Python.
+---
+slides: http://proofit404.github.io/talks/dependency-injection-for-python/
+---
+talk_type: lightning
+---
+title: Dependency Injection in Python
+---
+video: https://www.youtube.com/watch?v=9xce532dRqk

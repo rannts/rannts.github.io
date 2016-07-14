@@ -1,0 +1,15 @@
+speaker: Алексей Кутепов
+---
+company: Revel Systems
+---
+date: 2016-06-25 16:40
+---
+description: История одной практической задачи. Прекрасный PostgreSQL - рекурсивные выборки средствами SQL. Как поле depth в таблице с деревом упрощает жизнь.
+---
+slides: http://www.slideshare.net/AlekseyKutepov/trees-in-rdbs
+---
+talk_type: main
+---
+title: Древовидная структура в PostgreSQL. SQL Common Table Expression
+---
+video: https://www.youtube.com/watch?v=CSnRbzpB7KU
