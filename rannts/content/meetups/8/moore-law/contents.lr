@@ -1,0 +1,15 @@
+speaker: Денис Нагорный
+---
+company: Intel
+---
+date: 2016-01-26 18:40
+---
+description: Поговорим о том c чем связан интерес Intel’а к питону, почему питон не успевает за развитием железа, каких результатов мы добились и как видим будущее питона с точки зрения утилизации возможностей железа.
+---
+slides: http://www.slideshare.net/9seconds/denis-nagorny-pumping-python-performance
+---
+talk_type: main
+---
+title: Python и закон Мура. Кто виноват и что делать?
+---
+video: https://www.youtube.com/watch?v=8MsLnK9HcAY
