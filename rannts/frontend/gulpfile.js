@@ -14,7 +14,7 @@ gulp.task("default", ["bundle_js", "bundle_css", "bundle_images"]);
 gulp.task("watch", ["default"], function() {
     gulp.watch("js/*", ["bundle_js"]);
     gulp.watch("styles/*", ["bundle_css"]);
-    gulp.watch("images/*", ["bundle_images"])
+    gulp.watch("images/*", ["bundle_images"]);
 });
 
 
@@ -30,9 +30,9 @@ gulp.task("bundle_js", function() {
 });
 
 
-gulp.task("bundle_css", function(callback) {
+gulp.task("bundle_css", function() {
     var processors = [
-        autoprefixer({browsers: ['last 1 version']}),
+        autoprefixer({browsers: ["last 1 version"]}),
         cssnano()
     ];
 

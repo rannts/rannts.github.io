@@ -140,3 +140,67 @@
         <p class="{{ slides_class }}">Слайды: <a href="{{ talk.slides.url }}">{{ talk.slides.url }}</a></p>
     {% endif %}
 {% endmacro %}
+
+
+{% macro pagination_widget(pagination) %}
+    {% if pagination.pages > 1 %}
+        <section class="section">
+            <div class="container has-text-centered pagination">
+                <ul>
+                    {{ render_pagination(pagination) }}
+                </ul>
+            </div>
+        </section>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_pagination(pagination) %}
+    {% if pagination.pages <= 5 %}
+        {{ render_simple_pagination(pagination) }}
+    {% else %}
+        {{ render_complex_pagination(pagination) }}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_simple_pagination(pagination) %}
+    {% for idx in range(1, 1 + pagination.pages) %}
+        {{ render_pagination_element(idx, pagination) }}
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro render_complex_pagination(pagination) %}
+    {# I know, it looks horrible. But it works so please do not try to OPTIMIZE OR YOU DIE #}
+
+    {% if pagination.page - 2 > 1 %}
+        {{ render_pagination_element(1, pagination) }}
+        <li>...</li>
+    {% elif pagination.page - 2 == 1 %}
+        {{ render_pagination_element(1, pagination) }}
+    {% endif %}
+
+    {{ render_pagination_element(pagination.page - 1, pagination) }}
+    {{ render_pagination_element(pagination.page, pagination) }}
+    {{ render_pagination_element(pagination.page + 1, pagination) }}
+
+    {% if pagination.page + 2 < pagination.pages %}
+        <li>...</li>
+    {% endif %}
+
+    {% if pagination.page + 1 < pagination.pages %}
+        {{ render_pagination_element(pagination.pages, pagination) }}
+    {% endif %}
+{% endmacro%}
+
+
+{% macro render_pagination_element(page, pagination) %}
+    {% if page > 0 and page <= pagination.pages %}
+        {% if page == pagination.page %}
+            <li class="current_page">{{ page }}</li>
+        {% else %}
+            <li><a href="{{ ('@' ~ page)|url }}">{{ page }}</a></li>
+        {% endif %}
+    {% endif %}
+{% endmacro %}
