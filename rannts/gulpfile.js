@@ -2,29 +2,31 @@
 // Also, tuned for lektor-gulp
 
 // Modules import
-var path = require("path"),
-    gulp = require("gulp"),
-    rename = require("gulp-rename"),
-    uglifyjs = require("gulp-uglify"),
-    sass = require("gulp-sass"),
+var args = require("minimist")(process.argv.slice(2)),
     autoprefixer = require("autoprefixer"),
-    postcss = require("gulp-postcss"),
+    concat = require("gulp-concat"),
     cssnano = require("cssnano"),
+    gulp = require("gulp"),
     htmlmin = require("gulp-html-minifier"),
     optipng = require("gulp-optipng"),
-    concat = require("gulp-concat"),
-    args = require("minimist")(process.argv.slice(2));
+    path = require("path"),
+    postcss = require("gulp-postcss"),
+    rename = require("gulp-rename"),
+    sass = require("gulp-sass"),
+    uglifyjs = require("gulp-uglify");
+
 
 // Constants
 var DEFAULT_SOURCE = "frontend",
     DEFAULT_ASSETS = path.join("assets", "static");
 
+
 // Directories used for tasks
-var SOURCE = args.source || "frontend",
+var SOURCE = args.source || DEFAULT_SOURCE,
     SOURCE_JS_DIR = args.source_js_dir || "js",
     SOURCE_CSS_DIR = args.source_css_dir || "css",
     SOURCE_IMG_DIR = args.source_img_dir || "images",
-    DESTINATION_DIR = args.destination || "",
+    RESULT_DIR = args.result_dir || "",
     SOURCE_JS = path.join(SOURCE, SOURCE_JS_DIR),
     SOURCE_CSS = path.join(SOURCE, SOURCE_CSS_DIR),
     SOURCE_IMG = path.join(SOURCE, SOURCE_IMG_DIR),
@@ -103,7 +105,7 @@ gulp.task("process_html", function() {
         useShortDoctype: true
     };
 
-    return gulp.src(path.join(DESTINATION_DIR, "**.html"))
+    return gulp.src(path.join(RESULT_DIR, "**/*.html"))
         .pipe(htmlmin(options))
-        .pipe(gulp.dest(DESTINATION_DIR))
+        .pipe(gulp.dest(RESULT_DIR))
 });
