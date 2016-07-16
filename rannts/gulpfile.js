@@ -39,9 +39,9 @@ gulp.task("default", ["build_static"]);
 gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
 
 // Tasks for lektor-gulp
-gulp.task("server_spawn", ["watch"])
-gulp.task("before_build_all", ["build_static"])
-gulp.task("after_build_all", ["process_html"])
+gulp.task("server_spawn", ["watch"]);
+gulp.task("before_build_all", ["build_static"]);
+gulp.task("after_build_all", ["process_html"]);
 
 
 gulp.task("watch", ["default"], function() {
@@ -83,7 +83,7 @@ gulp.task("bundle_images", function() {
     return gulp.src(path.join(SOURCE_IMG, "**.png"))
         .pipe(optipng(options))
         .pipe(gulp.dest(ASSETS_IMG));
-})
+});
 
 
 gulp.task("process_html", function() {
@@ -107,5 +107,5 @@ gulp.task("process_html", function() {
 
     return gulp.src(path.join(RESULT_DIR, "**/*.html"))
         .pipe(htmlmin(options))
-        .pipe(gulp.dest(RESULT_DIR))
+        .pipe(gulp.dest(RESULT_DIR));
 });
