@@ -109,6 +109,7 @@ class GulpPlugin(Plugin):
         if self.is_enabled or self.gulp_process:
             return
 
+        self.npm_install()
         reporter.report_generic("Starting Gulp static build")
         self.run_gulp(GULP_TASK_BEFORE_BUILD_ALL).wait()
         reporter.report_generic("Finished Gulp static build")
