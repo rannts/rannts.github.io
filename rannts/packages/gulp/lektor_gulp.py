@@ -77,11 +77,6 @@ class GulpPlugin(Plugin):
             yield "--{0}".format(key)
             yield value
 
-    def npm_install(self):
-        reporter.report_generic("Installing npm packages")
-        portable_popen(["npm", "install"], cwd=self.env.root_path).wait()
-        reporter.report_generic("Finish installing npm packages")
-
     def run_gulp(self, task, result_path=None):
         args = [self.gulp_path, task]
         args.extend(self.gulp_options)
@@ -95,7 +90,6 @@ class GulpPlugin(Plugin):
         self.is_enabled = bool(build_flags.get("gulp"))
 
         if self.is_enabled:
-            self.npm_install()
             reporter.report_generic("Spawning Gulp watcher")
             self.gulp_process = self.run_gulp(GULP_TASK_SERVER_SPAWN)
 
@@ -109,7 +103,6 @@ class GulpPlugin(Plugin):
         if self.is_enabled or self.gulp_process:
             return
 
-        self.npm_install()
         reporter.report_generic("Starting Gulp static build")
         self.run_gulp(GULP_TASK_BEFORE_BUILD_ALL).wait()
         reporter.report_generic("Finished Gulp static build")

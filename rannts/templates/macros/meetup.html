@@ -1,3 +1,6 @@
+{% import "macros/common.html" as macros_common %}
+
+
 {% macro number(num) %}
     {{ "#" ~ num }}
 {% endmacro %}
@@ -5,7 +8,7 @@
 
 {% macro widget_map_subheader(meetup) %}
     {% if meetup.date %}
-        {{ meetup.date|datetimeformat("d MMMM YYYY, HH:mm") }}
+        {{ macros_common.format_date(meetup.date) }}
     {% endif %}
 
     {% if meetup.place %}
@@ -22,17 +25,21 @@
     {{
         widget_talks_section(
             "Доклады",
-            meetup.children.filter(F.talk_type == "main").all())
+            meetup.children.filter(F.talk_type == "main").all(),
+            expand
+        )
     }}
     {{
         widget_talks_section(
             "Lightning talks",
-            meetup.children.filter(F.talk_type == "lightning").all())
+            meetup.children.filter(F.talk_type == "lightning").all(),
+            expand
+        )
     }}
 {% endmacro %}
 
 
-{% macro widget_talks_section(name, talks) %}
+{% macro widget_talks_section(name, talks, expand) %}
     {% if talks %}
         <h3>{{ name }}</h3>
         {% for talk in talks %}

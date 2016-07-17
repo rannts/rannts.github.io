@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "meetup-list.html" %}
 
 
 {% import "macros/common.html" as macros_common %}
@@ -21,7 +21,7 @@
 
 
 {% block title %}
-    {{ macros_meetup.number(this.number) }} ← Митапы ← {{ super() }}
+    {{ macros_meetup.number(this.number) }} ← {{ super() }}
 {% endblock %}
 
 

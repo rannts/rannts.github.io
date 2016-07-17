@@ -53,3 +53,8 @@
         </div>
     </section>
 {% endmacro %}
+
+
+{% macro format_date(date) %}
+    {{ date|datetimeformat("d MMMM YYYY, HH:mm") }}
+{% endmacro %}

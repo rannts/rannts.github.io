@@ -1,0 +1,31 @@
+{% import "macros/common.html" as macros_common %}
+
+
+{% macro widget_news(news, full=True) %}
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                {{ render_title(news) }}
+                {{ render_subtitle(news) }}
+                {{ render_content(news) }}
+            </div>
+        </div>
+    </section>
+{% endmacro %}
+
+
+{% macro render_title(news) %}
+    <h1 class="title"><a href="{{ news|url }}">{{ news.title }}</a></h1>
+{% endmacro %}
+
+
+{% macro render_subtitle(news) %}
+    <h2 class="subtitle">{{ macros_common.format_date(news.date) }}</h2>
+{% endmacro %}
+
+
+{% macro render_content(news, full) %}
+    <div {% if not full %} class="news-cut" {% endif %}>
+        {{ news.text }}
+    </div>
+{% endmacro %}
