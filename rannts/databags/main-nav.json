@@ -10,10 +10,6 @@
             "url": "/meetups"
         },
         {
-            "title": "Люди",
-            "url": "/people"
-        },
-        {
             "title": "Информация",
             "url": "/info"
         }
