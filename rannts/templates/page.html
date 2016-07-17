@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
-{% import "macros.html" as macros %}
+{% import "macros/common.html" as macros_common %}
 
 {% block title %}
     {{ this.title }} ← {{ super() }}
 {% endblock %}
 
 {% block content %}
-    {{ macros.main_nav("") }}
+    {{ macros_common.widget_main_nav("") }}
 
 {% endblock %}

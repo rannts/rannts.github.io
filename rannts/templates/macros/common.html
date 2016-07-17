@@ -1,4 +1,4 @@
-{% macro main_nav(active) %}
+{% macro widget_main_nav(active) %}
 <nav class="nav nav-main">
     <div class="container">
         <div id="logo" class="nav-left">
@@ -25,10 +25,10 @@
 {% endmacro %}
 
 
-{% macro hero_block(active_link, active_class, title, subtitle) %}
+{% macro widget_hero_block(active_link, active_class, title, subtitle) %}
 <section class="hero is-{{ active_class }}">
     <div class="hero-head">
-        {{ main_nav(active_link) }}
+        {{ widget_main_nav(active_link) }}
     </div>
 
     <div class="hero-body">

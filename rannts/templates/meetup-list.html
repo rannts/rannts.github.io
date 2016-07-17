@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    {% call macros_common.hero_block("meetups", "meetup", "Митапы", "Хахатоны и бухкэмпы") %}
+    {% call macros_common.widget_hero_block("meetups", "meetup", "Митапы", "Хахатоны и бухкэмпы") %}
     {% endcall %}
 
     {% for post in this.pagination.items %}

@@ -8,7 +8,7 @@
 {% endblock %}
 
 {% block content %}
-    {% call macros_common.hero_block(
+    {% call macros_common.widget_hero_block(
             "meetups", "meetup", "#" ~ this.number,
             macros_meetup.meetup_subheader(this)) %}
         <li class="is-active"><a section="about">О митапе</a></li>
