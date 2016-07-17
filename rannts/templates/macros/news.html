@@ -25,7 +25,9 @@
 
 
 {% macro render_content(news, full) %}
-    <div {% if not full %} class="news-cut" {% endif %}>
+    {% if full %}
         {{ news.text }}
-    </div>
+    {% else %}
+        {{ news.text.html|postcut(news|url) }}
+    {% endif %}
 {% endmacro %}
