@@ -1,3 +1,8 @@
+{% macro number(num) %}
+    {{ "#" ~ num }}
+{% endmacro %}
+
+
 {% macro widget_map_subheader(meetup) %}
     {% if meetup.date %}
         {{ meetup.date|datetimeformat("d MMMM YYYY, HH:mm") }}

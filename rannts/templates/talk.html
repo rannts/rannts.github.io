@@ -7,7 +7,7 @@
 {% endmacro %}
 
 {% macro subtitle(talk) %}
-     {{ this.speaker }} @ <a href="{{ talk.parent.url_path|url }}">{{ config.values.PROJECT.name }} #{{ talk.parent.number }}</a>
+     {{ this.speaker }} @ <a href="{{ talk.parent.url_path|url }}">{{ config.values.PROJECT.name }} {{ macros_meetup.number(this.parent.number) }}</a>
 {% endmacro %}
 
 {% block title %}

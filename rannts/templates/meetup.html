@@ -9,7 +9,7 @@
 
 {% block content %}
     {% call macros_common.widget_hero_block(
-            "meetups", "meetup", "#" ~ this.number,
+            "meetups", "meetup", macros_meetup.number(this.number),
             macros_meetup.widget_map_subheader(this)) %}
         <li class="is-active"><a section="about">О митапе</a></li>
         <li><a section="talks">Доклады</a></li>

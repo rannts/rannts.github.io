@@ -1,57 +1,55 @@
 {% macro widget_main_nav(active) %}
-<nav class="nav nav-main">
-    <div class="container">
-        <div id="logo" class="nav-left">
-            <a class="nav-item" href="/" title="На главную">
-              <h1>{{ config.values.PROJECT.name }}</h1>
-            </a>
-        </div>
-
-        <span class="nav-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </span>
-
-        <div class="nav-right nav-mobile">
-            {% for item in bag("main-nav")["items"] %}
-                <a class="nav-item{% if item.url == "/" + active %} is-active{% endif %}" href="{{ item.url|url }}" title="{{ item.title }}">
-                    {{ item.title }}
+    <nav class="nav nav-main">
+        <div class="container">
+            <div id="logo" class="nav-left">
+                <a class="nav-item" href="/" title="На главную">
+                  <h1>{{ config.values.PROJECT.name }}</h1>
                 </a>
-            {% endfor %}
+            </div>
+
+            <span class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+
+            <div class="nav-right nav-mobile">
+                {% for item in bag("main-nav")["items"] %}
+                    <a class="nav-item{% if item.url == "/" + active %} is-active{% endif %}" href="{{ item.url|url }}" title="{{ item.title }}">
+                        {{ item.title }}
+                    </a>
+                {% endfor %}
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 {% endmacro %}
 
 
 {% macro widget_hero_block(active_link, active_class, title, subtitle) %}
-<section class="hero is-{{ active_class }}">
-    <div class="hero-head">
-        {{ widget_main_nav(active_link) }}
-    </div>
-
-    <div class="hero-body">
-        <div class="container">
-            {% if title %}
-                <h1 class="title">{{ title }}</h1>
-            {% endif %}
-            {% if title %}
-                <h2 class="subtitle">{{ subtitle }}</h2>
-            {% endif %}
+    <section class="hero is-{{ active_class }}">
+        <div class="hero-head">
+            {{ widget_main_nav(active_link) }}
         </div>
-    </div>
 
-    <div class="hero-foot">
-        <nav class="tabs section-tabs">
+        <div class="hero-body">
             <div class="container">
-                <ul>
-                    {{ caller() }}
-                </ul>
+                {% if title %}
+                    <h1 class="title">{{ title }}</h1>
+                {% endif %}
+                {% if title %}
+                    <h2 class="subtitle">{{ subtitle }}</h2>
+                {% endif %}
             </div>
-        </nav>
-    </div>
+        </div>
 
-</section>
-
+        <div class="hero-foot">
+            <nav class="tabs section-tabs">
+                <div class="container">
+                    <ul>
+                        {{ caller() }}
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </section>
 {% endmacro %}
