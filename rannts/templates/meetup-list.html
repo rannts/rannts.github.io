@@ -1,12 +1,14 @@
 {% extends "layout.html" %}
-{% import "macros.html" as macros %}
+{% import "macros/common.html" as macros_common %}
+{% import "macros/pagination.html" as macros_pagination %}
+{% import "macros/meetup.html" as macros_meetup %}
 
 {% block title %}
     Митапы ← {{ super() }}
 {% endblock %}
 
 {% block content %}
-    {% call macros.hero_block("meetups", "meetup", "Митапы", "Хахатоны и бухкэмпы") %}
+    {% call macros_common.hero_block("meetups", "meetup", "Митапы", "Хахатоны и бухкэмпы") %}
     {% endcall %}
 
     {% for post in this.pagination.items %}
@@ -14,19 +16,19 @@
             <div class="container">
                 <div class="content">
                     <h1 class="title"><a href="{{ post|url }}">#{{ post.number }}</a></h1>
-                    <h2 class="subtitle">{{ macros.meetup_subheader(post) }}</h2>
+                    <h2 class="subtitle">{{ macros_meetup.meetup_subheader(post) }}</h2>
 
-                    {{ macros.registration_widget(post) }}
+                    {{ macros_meetup.registration_widget(post) }}
 
                     {% if post.description %}
                         {{ post.description }}
                     {% endif %}
 
-                    {{ macros.meetup_talks(post, False) }}
+                    {{ macros_meetup.meetup_talks(post, False) }}
                 </div>
             </div>
         </section>
     {% endfor %}
 
-    {{ macros.pagination_widget(this.pagination) }}
+    {{ macros_pagination.pagination_widget(this.pagination) }}
 {% endblock %}

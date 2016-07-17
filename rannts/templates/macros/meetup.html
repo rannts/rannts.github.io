@@ -1,0 +1,83 @@
+{% macro meetup_subheader(meetup) %}
+    {% if meetup.date %}
+        {{ meetup.date|datetimeformat("d MMMM YYYY, HH:mm") }}
+        {% if meetup.place %}
+            @ <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+        {% endif %}
+    {% else %}
+        Будет проходить в <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro meetup_talks(meetup, expand) %}
+    {% set lightning_talks = meetup.children.filter(F.talk_type == "lightning").all() %}
+    {% set main_talks = meetup.children.filter(F.talk_type == "main").all() %}
+
+    {% if main_talks %}
+        <h3>Доклады</h3>
+        {% for talk in main_talks %}
+            <div class="columns">
+                {{ meetup_talk(talk, expand) }}
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    {% if lightning_talks %}
+        <h3>Lightning Talks</h3>
+        {% for talk in lightning_talks %}
+            <div class="columns">
+                {{ meetup_talk(talk, expand) }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro meetup_talk(talk, expand) %}
+<div class="column is-one-quarter">
+    {{ talk.date|datetimeformat("HH:mm") }}
+</div>
+
+<div class="column">
+    {% if expand %}
+        <h4><a href="{{ talk|url }}">{{ talk.title }}</a></h4>
+    {% else%}
+        <h4>{{ talk.title }}</h4>
+    {% endif%}
+    <h5>
+        {{ talk.speaker }}
+        {% if talk.company %}
+            ({{ talk.company }})
+        {% endif %}
+    </h5>
+
+
+    {% if expand and talk.slides and talk.slides.url %}
+        {{ slides_widget(talk) }}
+    {% endif%}
+
+    {{ talk.description }}
+
+    {% if expand and talk.video %}
+        {{ talk.video.url|oembed(urlize_all=False, maxwidth=640) }}
+    {% endif %}
+</div>
+{% endmacro %}
+
+
+{% macro registration_widget(meetup) %}
+    {% if meetup.registration_url and meetup.registration_url.url and not meetup.finished %}
+        <p class="meetup-registration-link">
+            Форма регистрации:
+            <a href="{{ meetup.registration_url.url }}">{{ meetup.registration_url.url }}</a>
+        </p>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro slides_widget(talk, slides_class="is-small") %}
+    {% if talk.slides and talk.slides.url %}
+        <p class="{{ slides_class }}">Слайды: <a href="{{ talk.slides.url }}">{{ talk.slides.url }}</a></p>
+    {% endif %}
+{% endmacro %}

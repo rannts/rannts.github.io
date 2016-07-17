@@ -1,5 +1,6 @@
 {% extends "layout.html" %}
-{% import "macros.html" as macros %}
+{% import "macros/common.html" as macros_common %}
+{% import "macros/meetup.html" as macros_meetup %}
 
 {% macro talk_title(talk) %}
     {{ this.speaker }} — {{ this.title }}
@@ -14,13 +15,13 @@
 {% endblock %}
 
 {% block content %}
-    {% call macros.hero_block("meetups", "meetup", this.title, subtitle(this)) %}
+    {% call macros_common.hero_block("meetups", "meetup", this.title, subtitle(this)) %}
     {% endcall %}
 
     <section class="section">
         <div class="container">
             <div class="content">
-                {{ macros.slides_widget(this, "meetup-slides") }}
+                {{ macros_meetup.slides_widget(this, "meetup-slides") }}
 
                 {% if this.description %}
                     {{ this.description }}
