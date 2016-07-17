@@ -10,7 +10,7 @@
 {% block content %}
     {% call macros_common.widget_hero_block(
             "meetups", "meetup", "#" ~ this.number,
-            macros_meetup.meetup_subheader(this)) %}
+            macros_meetup.widget_map_subheader(this)) %}
         <li class="is-active"><a section="about">О митапе</a></li>
         <li><a section="talks">Доклады</a></li>
         <li><a section="place">Место проведения</a></li>
@@ -19,7 +19,7 @@
     <section id="section-tabs-about" class="section section-item">
         <div class="container">
             <div class="content">
-                {{ macros_meetup.registration_widget(this) }}
+                {{ macros_meetup.widget_registration(this) }}
 
                 {% if this.description %}
                     {{ this.description }}
@@ -33,7 +33,7 @@
     <section id="section-tabs-talks" class="section section-item">
         <div class="container">
             <div class="content">
-                {{ macros_meetup.meetup_talks(this, True) }}
+                {{ macros_meetup.widget_talks(this, True) }}
             </div>
         </div>
     </section>
