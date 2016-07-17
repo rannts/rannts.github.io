@@ -58,7 +58,7 @@ gulp.task("bundle_js", function() {
 
     return gulp.src(path.join(SOURCE_JS, "**.js"))
         .pipe(concat("main.js"))
-        // .pipe(uglifyjs(options))
+        .pipe(uglifyjs(options))
         .pipe(gulp.dest(ASSETS_JS));
 });
 

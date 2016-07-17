@@ -1,6 +1,3 @@
-title: Welcome to rannts! 1
+_template: main-page.html
 ---
-body:
-
-This is a basic demo website that shows how to use Lektor for a basic
-website with some pages.
+_model: none

@@ -1,0 +1,129 @@
+{% extends "layout.html" %}
+
+
+{% import "macros/common.html" as macros_common %}
+{% import "macros/meetup.html" as macros_meetup %}
+{% import "macros/news.html" as macros_news %}
+
+
+{% macro render_news() %}
+    {% set news = site.get("/news@1") %}
+
+    {% for post in news.pagination.items %}
+        {{ macros_news.render_news(post, False) }}
+    {% endfor %}
+
+    {{ render_more(news.pagination, "Новостей") }}
+{% endmacro %}
+
+
+{% macro render_meetups() %}
+    {%
+        set unfinished = site.query("/meetups").filter(
+            (F._model == "meetup").and(F.finished == False)).order_by("-date").first()
+    %}
+    {%
+        set finished = site.query("/meetups").filter(
+            (F._model == "meetup").and(F.finished == True)).order_by("-date").limit(2).all()
+    %}
+
+    {{ render_meetups_unfinished(unfinished) }}
+    {{ render_meetups_finished(finished) }}
+    {{ render_more(site.get("/meetups@1").pagination, "событий") }}
+{% endmacro %}
+
+
+{% macro render_more(pagination, what) %}
+    {% if pagination.pages > 1 %}
+        <p class="content main-ending">
+            <a href="{{ pagination.next|url }}">Больше {{ what }}</a>
+        </p>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_meetups_unfinished(meetup) %}
+    {% if meetup %}
+        <div class="content meetup-unpublished">
+            {{ render_meetup_title(meetup, False) }}
+            {{ render_meetup_subtitle(meetup) }}
+            {{ render_meetup_info(meetup, False) }}
+        </div>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_meetups_finished(meetups) %}
+    {% if meetups %}
+        <h1 class="delimiter">Прошедшие события</h1>
+
+        {% for meetup in meetups %}
+            <div class="content meetup-published">
+                {{ render_meetup_title(meetup, True) }}
+                {{ render_meetup_subtitle(meetup) }}
+                {{ render_meetup_info(meetup, True) }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_meetup_title(meetup, finished) %}
+    <h1 class="title">
+        <a href="{{ meetup|url }}">
+            {% if finished %}
+                {{ config.values.PROJECT.name }} {{ macros_meetup.number(meetup.number) }}
+            {% else %}
+                Следующий митап
+            {% endif %}
+        </a>
+    </h1>
+{% endmacro %}
+
+
+{% macro render_meetup_subtitle(meetup) %}
+    <h2 class="subtitle">{{ macros_meetup.widget_map_subheader(meetup) }}</h2>
+{% endmacro %}
+
+
+{% macro render_meetup_info(meetup, finished) %}
+    {% if meetup.children.count() %}
+        <p>Доклады:</p>
+
+        <ul>
+            {% for talk in meetup.children.filter(F.talk_type == "main") %}
+                <li>{{ render_meetup_speaker(talk, finished) }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Состав докладчиков пока не определен.</p>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro render_meetup_speaker(talk, finished) %}
+    {{ talk.speaker }} —
+    {% if finished %}
+        <a href="{{ talk|url }}">{{ talk.title }}</a>
+    {% else %}
+        <em>{{ talk.title }}</em>
+    {% endif %}
+{% endmacro %}
+
+
+{% block content %}
+    {{ macros_common.widget_main_nav("") }}
+
+    <section class="section main-page">
+        <div class="container">
+            <div class="columns">
+                <div id="main-page-news" class="column is-half">
+                    {{ render_news() }}
+                </div>
+                <div id="main-page-meetups" class="column is-half">
+                    {{ render_meetups() }}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
