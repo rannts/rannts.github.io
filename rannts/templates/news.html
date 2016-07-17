@@ -1,0 +1,25 @@
+{% extends "news-list.html" %}
+
+
+{% import "macros/common.html" as macros_common %}
+{% import "macros/news.html" as macros_news %}
+
+
+{% block title %}
+    {{ this.title }} ← {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+    {% call macros_common.widget_hero_block(
+        "news", "news", this.title, macros_common.format_date(this.date)) %}
+    {% endcall %}
+
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                {{ macros_news.render_content(this, True) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
