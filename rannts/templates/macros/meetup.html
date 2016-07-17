@@ -6,31 +6,36 @@
 {% macro widget_map_subheader(meetup) %}
     {% if meetup.date %}
         {{ meetup.date|datetimeformat("d MMMM YYYY, HH:mm") }}
-        {% if meetup.place %}
-            @ <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+    {% endif %}
+
+    {% if meetup.place %}
+        {% if meetup.date %}
+            @ {{ place_url(meetup) }}
+        {% else %}
+            Будет проходить в {{ place_url(meetup) }}
         {% endif %}
-    {% else %}
-        Будет проходить в <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
     {% endif %}
 {% endmacro %}
 
 
 {% macro widget_talks(meetup, expand) %}
-    {% set lightning_talks = meetup.children.filter(F.talk_type == "lightning").all() %}
-    {% set main_talks = meetup.children.filter(F.talk_type == "main").all() %}
+    {{
+        widget_talks_section(
+            "Доклады",
+            meetup.children.filter(F.talk_type == "main").all())
+    }}
+    {{
+        widget_talks_section(
+            "Lightning talks",
+            meetup.children.filter(F.talk_type == "lightning").all())
+    }}
+{% endmacro %}
 
-    {% if main_talks %}
-        <h3>Доклады</h3>
-        {% for talk in main_talks %}
-            <div class="columns">
-                {{ widget_talk(talk, expand) }}
-            </div>
-        {% endfor %}
-    {% endif %}
 
-    {% if lightning_talks %}
-        <h3>Lightning Talks</h3>
-        {% for talk in lightning_talks %}
+{% macro widget_talks_section(name, talks) %}
+    {% if talks %}
+        <h3>{{ name }}</h3>
+        {% for talk in talks %}
             <div class="columns">
                 {{ widget_talk(talk, expand) }}
             </div>
@@ -52,13 +57,10 @@
         {% endif%}
         <h5>
             {{ talk.speaker }}
-            {% if talk.company %}
-                ({{ talk.company }})
-            {% endif %}
+            {{ company_name(talk) }}
         </h5>
 
-
-        {% if expand and talk.slides and talk.slides.url %}
+        {% if expand %}
             {{ widget_slides(talk) }}
         {% endif%}
 
@@ -84,5 +86,21 @@
 {% macro widget_slides(talk, slides_class="is-small") %}
     {% if talk.slides and talk.slides.url %}
         <p class="{{ slides_class }}">Слайды: <a href="{{ talk.slides.url }}">{{ talk.slides.url }}</a></p>
+    {% endif %}
+{% endmacro %}
+
+
+{% macro place_url(meetup) %}
+    {% if meetup.map_url %}
+        <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
+    {% else %}
+        {{ meetup.place }}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro company_name(talk) %}
+    {% if talk.company %}
+        ({{ talk.company }})
     {% endif %}
 {% endmacro %}

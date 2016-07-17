@@ -1,11 +1,15 @@
 {% extends "layout.html" %}
+
+
 {% import "macros/common.html" as macros_common %}
 {% import "macros/pagination.html" as macros_pagination %}
 {% import "macros/meetup.html" as macros_meetup %}
 
+
 {% block title %}
     Митапы ← {{ super() }}
 {% endblock %}
+
 
 {% block content %}
     {% call macros_common.widget_hero_block("meetups", "meetup", "Митапы", "Хахатоны и бухкэмпы") %}
@@ -19,11 +23,7 @@
                     <h2 class="subtitle">{{ macros_meetup.widget_map_subheader(post) }}</h2>
 
                     {{ macros_meetup.widget_registration(post) }}
-
-                    {% if post.description %}
-                        {{ post.description }}
-                    {% endif %}
-
+                    {{ post.description }}
                     {{ macros_meetup.widget_talks(post, False) }}
                 </div>
             </div>

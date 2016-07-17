@@ -1,6 +1,9 @@
 {% extends "layout.html" %}
+
+
 {% import "macros/common.html" as macros_common %}
 {% import "macros/meetup.html" as macros_meetup %}
+
 
 {% macro talk_title(talk) %}
     {{ this.speaker }} — {{ this.title }}
@@ -11,7 +14,7 @@
 {% endmacro %}
 
 {% block title %}
-    {{ this.speaker }} — {{ this.title }} ← #{{ this.parent.number }} ← Митапы ← {{ super() }}
+    {{ talk_title(this) }} ← {{ macros_meetup.number(this.parent.number) }} ← Митапы ← {{ super() }}
 {% endblock %}
 
 {% block content %}

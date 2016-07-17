@@ -90,7 +90,7 @@ gulp.task("process_html", function() {
     var options = {
         collapseWhitespace: true,
         collapseBooleanAttributes: true,
-        collapseInlineTagWhitespace: true,
+        collapseInlineTagWhitespace: false,
         decodeEntities: true,
         removeAttributeQuotes: true,
         removeComments: true,

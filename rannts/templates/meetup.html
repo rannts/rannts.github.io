@@ -1,11 +1,29 @@
 {% extends "layout.html" %}
+
+
 {% import "macros/common.html" as macros_common %}
 {% import "macros/meetup.html" as macros_meetup %}
 
 
+{% macro place(meetup) %}
+    <p>Место проведения:
+        {% if this.place %}
+            {{ macros_meetup.place_url(this) }}
+        {% else %}
+            пока что не определено.
+        {% endif %}
+    </p>
+
+    {% if this.map_url %}
+        {{ this.map_url.url|yandexmaps }}
+    {% endif %}
+{% endmacro %}
+
+
 {% block title %}
-    #{{ this.number }} ← Митапы ← {{ super() }}
+    {{ macros_meetup.number(this.number) }} ← Митапы ← {{ super() }}
 {% endblock %}
+
 
 {% block content %}
     {% call macros_common.widget_hero_block(
@@ -41,24 +59,8 @@
     <section id="section-tabs-place" class="section section-item">
         <div class="container">
             <div class="content">
-              <p>Место проведения:
-                  {% if this.place %}
-                      {% if this.map_url %}
-                          <a href="{{ this.map_url }}">{{ this.place }}</a>
-                      {% else %}
-                          {{ this.place }}
-                      {% endif %}
-                  {% else %}
-                      пока что не определено.
-                  {% endif %}
-              </p>
-
-              {% if this.map_url %}
-                  {{ this.map_url.url|yandexmaps }}
-              {% endif %}
-
+              {{ place(this) }}
             </div>
         </div>
     </section>
-
 {% endblock %}
