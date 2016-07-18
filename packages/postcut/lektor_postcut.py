@@ -29,7 +29,7 @@ class PostcutPlugin(Plugin):
     name = "postcut"
     description = "Adds a 'cut' link to the post"
 
-    PARSER = "html5lib"
+    PARSER = "html.parser"
 
     @property
     def children_limit(self):
@@ -56,7 +56,7 @@ class PostcutPlugin(Plugin):
 
     def get_contents(self, soup):
         contents = filter(
-            lambda tag: isinstance(tag, bs4.element.Tag), soup.body.children)
+            lambda tag: isinstance(tag, bs4.element.Tag), soup.children)
         contents = list(contents)
 
         return contents
