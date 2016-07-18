@@ -13,3 +13,5 @@ talk_type: main
 title: Understanding EXPLAIN in PostgreSQL
 ---
 video: https://www.youtube.com/watch?v=yIQoO07im8E
+---
+author: nikolay-telepenin
