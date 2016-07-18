@@ -13,3 +13,5 @@ talk_type: main
 title: Древовидная структура в PostgreSQL. SQL Common Table Expression
 ---
 video: https://www.youtube.com/watch?v=CSnRbzpB7KU
+---
+author: alexey-kutepov
