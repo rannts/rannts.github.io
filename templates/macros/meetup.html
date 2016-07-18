@@ -63,11 +63,8 @@
     </div>
 
     <div class="column">
-        {% if expand %}
-            <h4><a href="{{ talk|url }}">{{ talk.title }}</a></h4>
-        {% else%}
-            <h4>{{ talk.title }}</h4>
-        {% endif%}
+        <h4><a href="{{ talk|url }}">{{ talk.title }}</a></h4>
+
         <h5>
             {{ macros_speaker.speaker_name(talk.speaker) }}
             {{ company_name(talk) }}
