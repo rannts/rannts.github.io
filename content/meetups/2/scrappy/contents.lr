@@ -13,3 +13,5 @@ title: Скраппинг со Scrapy и без
 video: https://www.youtube.com/watch?v=mM_PEdT4SGk
 ---
 description: О том, как устроен [Scrappy](http://scrapy.org), и как с помощью него можно собирать нужные данные.
+---
+author: alexander-loschilov
