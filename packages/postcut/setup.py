@@ -13,6 +13,7 @@ setup(
         ]
     },
     install_requires=[
-        "beautifulsoup4"
+        "beautifulsoup4",
+        "html5lib==0.9999999"
     ]
 )

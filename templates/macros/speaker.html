@@ -1,6 +1,3 @@
-{% import "macros/meetup.html" as macros_meetup %}
-
-
 {% macro speaker_name(speaker_id) %}
     {%
         set model = site.query("/speakers")
@@ -29,7 +26,7 @@
         <ul>
             <span class="meetup-name">
                 <a href="{{ meetup|url }}">
-                    {{ macros_meetup.meetup_name(meetup.number) }}
+                    {{ config.values.PROJECT.name }} #{{ meetup.number }}
                 </a>
             </span>
 

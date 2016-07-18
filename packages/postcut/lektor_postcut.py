@@ -29,7 +29,7 @@ class PostcutPlugin(Plugin):
     name = "postcut"
     description = "Adds a 'cut' link to the post"
 
-    PARSER = "html.parser"
+    PARSER = "html5lib"
 
     @property
     def children_limit(self):
