@@ -17,6 +17,13 @@ $rannts-font-size: 1.2em
   background-repeat: repeat
   opacity: $opacity
 
+=rannts-link($opacity: 1)
+    a
+      +rannts-link-color(rgba($link-color-normal, $opacity))
+      &:visited
+        +rannts-link-color(rgba($link-color-visited, $opacity))
+      &:hover
+        +rannts-link-color($link-color-hover)
 
 // Styles
 
@@ -83,12 +90,7 @@ $rannts-font-size: 1.2em
         content: "↴ "
         color: $grey-light
 
-    a
-      +rannts-link-color($link-color-normal)
-      &:visited
-        +rannts-link-color($link-color-visited)
-      &:hover
-        +rannts-link-color($link-color-hover)
+    +rannts-link(1)
 
     code
       background-color: #fff6cd
@@ -147,13 +149,29 @@ $rannts-font-size: 1.2em
 
 #main-page-meetups
   .subtitle
-    a
-      +rannts-link-color(rgba($link-color-normal, 0.5))
-      &:visited
-        +rannts-link-color(rgba($link-color-visited, 0.5))
-      &:hover
-        +rannts-link-color($link-color-hover)
+    +rannts-link(0.5)
 
   .delimiter
     font-size: 2em
     margin-bottom: 0.8em
+
+#speaker-list
+  ul
+    margin-left: 0
+    margin-bottom: 1em
+
+  li
+    list-style-type: none
+    position: relative
+
+  > li
+    padding-bottom: 3em
+
+    li
+        margin-left: 120px
+
+  .meetup-name
+    display: inline-block
+    position: absolute
+
+    +rannts-link(0.4)

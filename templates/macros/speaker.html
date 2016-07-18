@@ -28,7 +28,9 @@
     {% if talks %}
         <ul>
             <span class="meetup-name">
-                {{ macros_meetup.meetup_name(meetup.number) }}
+                <a href="{{ meetup|url }}">
+                    {{ macros_meetup.meetup_name(meetup.number) }}
+                </a>
             </span>
 
             {% for talk in talks %}

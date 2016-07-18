@@ -105,7 +105,7 @@ gulp.task("process_html", function() {
         useShortDoctype: true
     };
 
-    // return gulp.src(path.join(RESULT_DIR, "**/*.html"))
-    //     .pipe(htmlmin(options))
-    //     .pipe(gulp.dest(RESULT_DIR));
+    return gulp.src(path.join(RESULT_DIR, "**/*.html"))
+        .pipe(htmlmin(options))
+        .pipe(gulp.dest(RESULT_DIR));
 });
