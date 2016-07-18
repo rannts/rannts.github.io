@@ -1,5 +1,3 @@
-speaker: Алексей Кудаков
----
 company: MERA
 ---
 date: 2016-04-23 16:00
@@ -14,4 +12,4 @@ slides: https://www.dropbox.com/s/uo6oo9wljwv4n60/ESP8266_RUS.pptx?dl=0
 ---
 video: https://www.youtube.com/watch?v=QXQPyJ1Fj9Q
 ---
-author: alexey-kudakov
+speaker: alexey-kudakov

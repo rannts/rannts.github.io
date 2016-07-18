@@ -1,5 +1,3 @@
-speaker: Сергей Архипов
----
 company: ASD Technologies
 ---
 date: 2014-11-13 17:30
@@ -14,4 +12,4 @@ video: https://www.youtube.com/watch?v=pjOTv8oPTrI
 ---
 description: Рассказ о том, как устроен [Gil](https://en.wikipedia.org/wiki/Global_interpreter_lock) в Python + небольшой пример кода, который не использует Gil.
 ---
-author: sergey-arkhipov
+speaker: sergey-arkhipov

@@ -1,5 +1,3 @@
-speaker: Александр Коробков
----
 company: Revel Systems
 ---
 date: 2016-03-19 15:10
@@ -14,4 +12,4 @@ title: Вводное слово
 ---
 video: https://www.youtube.com/watch?v=EfRh5c4FGYA
 ---
-author: alexander-korobkov
+speaker: alexander-korobkov

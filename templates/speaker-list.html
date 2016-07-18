@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+
+{% import "macros/common.html" as macros_common %}
+{% import "macros/meetup.html" as macros_meetup %}
+{% import "macros/speaker.html" as macros_speaker %}
+
+
+{% macro render_speaker_link(speaker) %}
+    <h1>
+        {{ macros_speaker.speaker_name(speaker._id) }}
+    </h1>
+{% endmacro %}
+
+
+{% block title %}
+    Люди ← {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+    {% call macros_common.widget_hero_block("speakers", "people", "Люди", "Те, кто") %}
+    {% endcall %}
+
+    <section class="section">
+        <div class="container">
+            <div class="content">
+                <ul class="speaker-list">
+                    {% for speaker in this.children %}
+                        <li>
+                            {{ render_speaker_link(speaker) }}
+                            {{ macros_speaker.render_talk_list(speaker) }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </section>
+{% endblock %}

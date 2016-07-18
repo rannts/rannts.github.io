@@ -1,5 +1,3 @@
-speaker: Александр Мокров
----
 company: Positive Technologies
 ---
 date: 2016-06-25 15:20
@@ -14,4 +12,4 @@ title: Печём пирожки с Celery
 ---
 video: https://www.youtube.com/watch?v=-ekYm3J-lp0
 ---
-author: alexander-mokrov
+speaker: alexander-mokrov

@@ -1,5 +1,3 @@
-speaker: Дмитрий Фролов
----
 company: ASD Technologies
 ---
 date: 2014-11-27 19:40
@@ -14,4 +12,4 @@ video: https://www.youtube.com/watch?v=LArDmHECVig
 ---
 description: Рассказ о том, как правильно выбрать JavaScript Framework, чем руководствоваться, а чем не стоит.
 ---
-author: dmitriy-frolov
+speaker: dmitriy-frolov

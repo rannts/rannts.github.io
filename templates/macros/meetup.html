@@ -1,8 +1,14 @@
 {% import "macros/common.html" as macros_common %}
+{% import "macros/speaker.html" as macros_speaker %}
 
 
 {% macro number(num) %}
     {{ "#" ~ num }}
+{% endmacro %}
+
+
+{% macro meetup_name(num) %}
+    {{ config.values.PROJECT.name }} {{ number(num) }}
 {% endmacro %}
 
 
@@ -63,7 +69,7 @@
             <h4>{{ talk.title }}</h4>
         {% endif%}
         <h5>
-            {{ talk.speaker }}
+            {{ macros_speaker.speaker_name(talk.speaker) }}
             {{ company_name(talk) }}
         </h5>
 

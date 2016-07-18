@@ -1,5 +1,3 @@
-speaker: Денис Нагорный
----
 company: Intel
 ---
 date: 2016-01-26 18:40
@@ -14,4 +12,4 @@ title: Python и закон Мура. Кто виноват и что делат
 ---
 video: https://www.youtube.com/watch?v=8MsLnK9HcAY
 ---
-author: denis-nagorniy
+speaker: denis-nagorniy

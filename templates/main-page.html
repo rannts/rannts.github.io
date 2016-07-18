@@ -4,6 +4,7 @@
 {% import "macros/common.html" as macros_common %}
 {% import "macros/meetup.html" as macros_meetup %}
 {% import "macros/news.html" as macros_news %}
+{% import "macros/speaker.html" as macros_speaker %}
 
 
 {% macro render_news() %}
@@ -102,7 +103,7 @@
 
 
 {% macro render_meetup_speaker(talk, finished) %}
-    {{ talk.speaker }} —
+    {{ macros_speaker.speaker_name(talk.speaker) }} —
     {% if finished %}
         <a href="{{ talk|url }}">{{ talk.title }}</a>
     {% else %}

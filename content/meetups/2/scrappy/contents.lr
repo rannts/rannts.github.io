@@ -1,5 +1,3 @@
-speaker: Александр Лощилов
----
 company: Artezio
 ---
 date: 2014-11-27 18:30
@@ -14,4 +12,4 @@ video: https://www.youtube.com/watch?v=mM_PEdT4SGk
 ---
 description: О том, как устроен [Scrappy](http://scrapy.org), и как с помощью него можно собирать нужные данные.
 ---
-author: alexander-loschilov
+speaker: alexander-loschilov

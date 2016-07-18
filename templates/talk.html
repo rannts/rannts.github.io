@@ -3,14 +3,19 @@
 
 {% import "macros/common.html" as macros_common %}
 {% import "macros/meetup.html" as macros_meetup %}
+{% import "macros/speaker.html" as macros_speaker %}
 
 
 {% macro talk_title(talk) %}
-    {{ this.speaker }} — {{ this.title }}
+    {{ macros_speaker.speaker_name(this.speaker) }} — {{ this.title }}
 {% endmacro %}
 
 {% macro subtitle(talk) %}
-     {{ this.speaker }} @ <a href="{{ talk.parent.url_path|url }}">{{ config.values.PROJECT.name }} {{ macros_meetup.number(this.parent.number) }}</a>
+     {{ macros_speaker.speaker_name(this.speaker) }} @
+     <a href="{{ talk.parent.url_path|url }}">
+         {{ config.values.PROJECT.name }}
+         {{ macros_meetup.number(this.parent.number) }}
+    </a>
 {% endmacro %}
 
 {% block title %}

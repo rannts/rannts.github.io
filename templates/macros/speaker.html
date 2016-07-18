@@ -1,0 +1,41 @@
+{% import "macros/meetup.html" as macros_meetup %}
+
+
+{% macro speaker_name(speaker_id) %}
+    {%
+        set model = site.query("/speakers")
+            .filter(F._model == "speaker").get(speaker_id)
+    %}
+
+    {{ model.first_name }} {{ model.last_name }}
+{% endmacro %}
+
+
+{% macro render_talk_list(speaker) %}
+    {% set meetups = site.query("/meetups") %}
+
+    {% for meetup in meetups %}
+        {{ render_talk_for_meetup(meetup, speaker) }}
+    {% endfor %}
+{% endmacro %}
+
+
+{% macro render_talk_for_meetup(meetup, speaker) %}
+    {%
+        set talks = meetup.children.filter(F.speaker == speaker._id).all()
+    %}
+
+    {% if talks %}
+        <ul>
+            <span class="meetup-name">
+                {{ macros_meetup.meetup_name(meetup.number) }}
+            </span>
+
+            {% for talk in talks %}
+                <li>
+                    <a href="{{ talk|url }}">{{ talk.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endmacro %}
