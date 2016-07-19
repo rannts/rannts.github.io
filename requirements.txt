@@ -4,3 +4,4 @@ pyyaml == 3.11
 lektor == 2.3
 micawber == 0.3.3
 beautifulsoup4 == 4.4.1
+html5lib == 0.9999999
