@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">News</title>
+  <id>urn:uuid:8c65e4c6-3028-3dbe-b75b-8c30f9966465</id>
+  <updated>2016-07-10T00:30:12Z</updated>
+  <link href="http://rannts.ru/news/" />
+  <link href="http://rannts.ru/news@atom/news/feed/news.xml" rel="self" />
+  <author>
+    <name></name>
+  </author>
+  <generator uri="https://github.com/ajdavis/lektor-atom" version="0.2">Lektor Atom Plugin</generator>
+  <entry xml:base="http://rannts.ru/news/2016/7/initial-commit/">
+    <title type="text">Initial commit</title>
+    <id>urn:uuid:3b9fc83a-4cc7-363d-9ae9-0931a674d684</id>
+    <updated>2016-07-10T00:30:12Z</updated>
+    <link href="http://rannts.ru/news/2016/7/initial-commit/" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;p&gt;Новый сайт. Раньше такого сайта не было, а теперь-то он есть! Раньше нужно было лазить и искать, а теперь тоже! Новый-то сайт ого-го!&lt;/p&gt;
+&lt;p&gt;Нас зовут &lt;a href=&quot;https://github.com/9seconds&quot;&gt;Архипов Сергей&lt;/a&gt; и &lt;a href=&quot;https://github.com/proofit404&quot;&gt;Малышев Артем&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;В далеком 2014 году, в ноябре, возникла идея проведения митапа питонистов в Нижнем Новгороде. Не для каких-то там корыстных целей, а просто ради самоидентификации и осознания своего места в IT-сообществе города. Нужно было понять, есть ли мы вообще. Оказалось, что есть; на момент написания этого текста прошло уже 11 митапов. Мы начали с 8 случайно забредших человек и дошли примерно до 30 регулярных посетителей. Кому-то может показаться, что это немного, но в нашем городе в большем количестве собираются лишь любители языков, где &lt;code&gt;parseInt(Infinity, 19) === 18&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Изначально мы были &lt;a href=&quot;https://vk.com/rannts&quot;&gt;ВКонтакте&lt;/a&gt;, и единственное, что было понятно - как узнать, когда будет новый митап. Про новые митапы лучше всего почитать на &lt;a href=&quot;https://it52.info&quot;&gt;IT52&lt;/a&gt;. Сходите, почитайте, посмотрите: это главная афиша айти-событий города. Мы, собственно, в каком-то смысле являемся частью IT52. А этот сайт - просто очередная самоидентификация. Чтобы было как ссылаться на видео с прошедших митапов.&lt;/p&gt;
+</content>
+  </entry>
+</feed>
