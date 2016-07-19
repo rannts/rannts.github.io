@@ -12,7 +12,9 @@
 {% macro render_section(classname, content)%}
     <section id="section-tabs-{{ classname }}" class="section">
         <div class="container">
-            {{ content }}
+            <div class="content">
+                {{ content }}
+            </div>
         </div>
     </section>
 {% endmacro %}
