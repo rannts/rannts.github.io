@@ -1,14 +1,22 @@
 # rannts
 
-rannts is a meetup of Python community of Nizhny Novgorod. This is a static website for [rannts.ru](http://rannts.ru).
+rannts is a meetup of Python community of Nizhny Novgorod. This is a
+static website for [rannts.ru](http://rannts.ru).
 
-This site is build with Lektor, using Gulp, SASS and Vanilla.js. If you are interested in hacking on the code, please read documentation on these tools.
+This site is build with [Lektor](https://www.getlektor.com),
+using [Gulp](http://gulpjs.com), [SASS](http://sass-lang.com) and
+[Vanilla.js](http://vanilla-js.com). If you are interested in hacking on
+the code, please read documentation on these tools.
 
 # Installation
 
 ## On a local machine
 
-Quite simple. Please be sure that pip, npm and nodejs are installed. After that do following:
+Quite simple. Please be sure that
+[pip](https://pip.pypa.io/en/stable/installing/),
+[npm](https://docs.npmjs.com/getting-started/installing-node) and
+[nodejs](https://nodejs.org/en/download) are installed. After that do
+following:
 
 ```shell
 $ pip install -r requirements.txt
@@ -22,7 +30,8 @@ webserver will be run on `127.0.0.1:5000`. If you want to build it, do
 $ lektor build -f gulp -O ./output
 ```
 
-Build flag `-f gulp` is necessary if you want to build static assets. If not, it is ok. But no CSS, JS and pictures will be available.
+Build flag `-f gulp` is necessary if you want to build static assets. If
+not, it is ok. But no CSS, JS and pictures will be available.
 
 ## On a local machine with Makefile
 
@@ -48,14 +57,19 @@ will build site to `./output` directory.
 
 ## I do not want to pollute my system with node and eggs
 
-It is perfectly fine. If you have a docker, just run
+It is perfectly fine. If you have a [Docker](https://www.docker.com),
+just run:
 
 ```shell
 $ make docker_build
 $ make docker_server
 ```
 
-Both commands build image `rannts`. First command builds a static website into `./output` directory on the host, second - will run server with Gulp and expose 5000 port to the localhost (in other words, you may proceed to `http://127.0.0.1:5000` and edit content). All changes will be tracked on the host **with proper permissions**.
+Both commands build image `rannts`. First command builds a static
+website into `./output` directory on the host, second - will run server
+with Gulp and expose 5000 port to the localhost (in other words, you may
+proceed to `http://127.0.0.1:5000` and edit content). All changes will
+be tracked on the host **with proper permissions**.
 
 ## How to deploy
 
