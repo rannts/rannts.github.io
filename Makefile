@@ -27,6 +27,9 @@ server_all: dependencies
 build: dependencies
 	@cd "$(ROOT_DIR)" && lektor build -f "$(GULP_FLAG)" -O "$(TARGET)"
 
+deploy: clean
+	@cd "$(ROOT_DIR)" && lektor build -f "$(GULP_FLAG)" && lektor deploy production
+
 docker_build: docker_create
 	@docker run -it -v "$(ROOT_DIR)":/rannts -e LUID=$(shell id -u) -w /rannts --rm=true "$(DOCKER_IMAGE)" make build
 
