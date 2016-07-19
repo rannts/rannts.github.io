@@ -1,8 +1,0 @@
-[project]
-name      = rannts
-locale    = ru_RU
-url       = http://rannts.ru
-url_style = absolute
-
-[packages]
-lektor-atom = 0.2
