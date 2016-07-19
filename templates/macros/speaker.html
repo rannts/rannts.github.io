@@ -24,14 +24,15 @@
 
     {% if talks %}
         <ul>
-            <span class="meetup-name">
-                <a href="{{ meetup|url }}">
-                    {{ config.values.PROJECT.name }} #{{ meetup.number }}
-                </a>
-            </span>
-
             {% for talk in talks %}
                 <li>
+                    {% if loop.first %}
+                        <span class="meetup-name">
+                            <a href="{{ meetup|url }}">
+                                {{ config.values.PROJECT.name }} #{{ meetup.number }}
+                            </a>
+                        </span>
+                    {% endif %}
                     <a href="{{ talk|url }}">{{ talk.title }}</a>
                 </li>
             {% endfor %}

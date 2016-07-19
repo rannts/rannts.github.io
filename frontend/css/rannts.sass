@@ -155,7 +155,8 @@ $rannts-font-size: 1.2em
     font-size: 2em
     margin-bottom: 0.8em
 
-#speaker-list
+#speaker-list,
+#speaker-talks
   ul
     margin-left: 0
     margin-bottom: 1em
@@ -173,5 +174,10 @@ $rannts-font-size: 1.2em
   .meetup-name
     display: inline-block
     position: absolute
+    margin-left: -120px
 
-    +rannts-link(0.4)
+    +rannts-link(0.3)
+
+#speaker-talks
+  li
+      margin-left: 120px

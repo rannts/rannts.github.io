@@ -1,0 +1,24 @@
+{% extends "speaker-list.html" %}
+
+
+{% import "macros/common.html" as macros_common %}
+{% import "macros/speaker.html" as macros_speaker %}
+
+
+{% block title %}
+    {{ macros_speaker.speaker_name(this._id) }} ← {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+    {% call macros_common.widget_hero_block("speakers", "people", macros_speaker.speaker_name(this._id)) %}
+    {% endcall %}
+
+    <section class="section">
+        <div class="container">
+            <div id="speaker-talks" class="content">
+                {{ macros_speaker.render_talk_list(this) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
