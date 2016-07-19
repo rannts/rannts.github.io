@@ -8,8 +8,9 @@
 #
 # -----------------------------------------------------------------------------
 
-ROOT_DIR := "$(strip $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))"
-TARGET   := "$(CURDIR)/output"
+ROOT_DIR  := "$(strip $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))"
+TARGET    := "$(CURDIR)/output"
+GULP_FLAG := gulp
 
 # -----------------------------------------------------------------------------
 
@@ -19,9 +20,11 @@ dependencies: python node
 server: dependencies
 	@cd "$(ROOT_DIR)" && lektor server
 
-build: dependencies
-	@cd "$(ROOT_DIR)" && lektor build -O "$(TARGET)"
+server_all: dependencies
+	@cd "$(ROOT_DIR)" && lektor server -f "$(GULP_FLAG)"
 
+build: dependencies
+	@cd "$(ROOT_DIR)" && lektor build -f "$(GULP_FLAG)" -O "$(TARGET)"
 
 python:
 	@pip install -r "$(ROOT_DIR)/requirements.txt"

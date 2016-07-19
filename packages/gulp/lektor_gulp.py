@@ -8,6 +8,9 @@ from lektor.reporter import reporter
 from lektor.utils import portable_popen
 
 
+BUILD_FLAG = "gulp"
+"""Build flag to use if we want to activate the plugin."""
+
 GULP_TASK_SERVER_SPAWN = "server_spawn"
 """Gulp task which should be executed on server spawn."""
 
@@ -40,6 +43,14 @@ class GulpPlugin(Plugin):
         self.gulp_process = None
         self.cfg = self.get_config()
         self.is_enabled = False
+
+    @property
+    def enabled(self):
+        return self.is_enabled
+
+    @enabled.setter
+    def enabled(self, value):
+        self.is_enabled = bool(value.get(BUILD_FLAG))
 
     @property
     def gulp_path(self):
@@ -87,9 +98,9 @@ class GulpPlugin(Plugin):
         return portable_popen(args, cwd=self.env.root_path)
 
     def on_server_spawn(self, build_flags, **extra):
-        self.is_enabled = bool(build_flags.get("gulp"))
+        self.enabled = build_flags
 
-        if self.is_enabled:
+        if self.enabled:
             reporter.report_generic("Spawning Gulp watcher")
             self.gulp_process = self.run_gulp(GULP_TASK_SERVER_SPAWN)
 
@@ -100,7 +111,9 @@ class GulpPlugin(Plugin):
             self.gulp_process = None
 
     def on_before_build_all(self, builder, **extra):
-        if self.is_enabled or self.gulp_process:
+        self.enabled = builder.build_flags
+
+        if not self.enabled or self.gulp_process:
             return
 
         reporter.report_generic("Starting Gulp static build")
@@ -108,7 +121,7 @@ class GulpPlugin(Plugin):
         reporter.report_generic("Finished Gulp static build")
 
     def on_after_build_all(self, builder, **extra):
-        if self.is_enabled and self.gulp_process:
+        if not self.enabled or self.gulp_process:
             return
 
         reporter.report_generic("Starting Gulp post-build actions")
