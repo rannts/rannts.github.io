@@ -6,3 +6,9 @@ url_style = absolute
 
 [packages]
 lektor-atom = 0.2
+
+[servers.production]
+name = GitHub repository
+enabled = yes
+default = yes
+target = ghpages://rannts/rannts.github.io?cname=rannts.ru
