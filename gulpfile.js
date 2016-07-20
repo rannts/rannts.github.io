@@ -35,7 +35,7 @@ var SOURCE = args.source || DEFAULT_SOURCE,
     ASSETS_IMG = args.assets_img || path.join(DEFAULT_ASSETS, SOURCE_IMG_DIR);
 
 
-gulp.task("default", ["build_static"]);
+gulp.task("default", ["build_static", "watch"]);
 gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
 
 // Tasks for lektor-gulp
@@ -44,9 +44,9 @@ gulp.task("before_build_all", ["build_static"]);
 gulp.task("after_build_all", ["process_html"]);
 
 
-gulp.task("watch", ["default"], function() {
-    gulp.watch(SOURCE_JS, ["bundle_js"]);
-    gulp.watch(SOURCE_CSS, ["bundle_css"]);
+gulp.task("watch", function() {
+    gulp.watch(path.join(SOURCE_JS, '**/*.js'), ["bundle_js"]);
+    gulp.watch(path.join(SOURCE_CSS, '**/*.sass'), ["bundle_css"]);
     gulp.watch(SOURCE_IMG, ["bundle_images"]);
 });
 

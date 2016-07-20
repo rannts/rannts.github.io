@@ -42,8 +42,10 @@
     };
 
     TabSwitcher.prototype.findTabLinks = function() {
-        var tabElements = document.body.querySelectorAll(this.getClassName()),
-            switcher = tabElements[0],
+        var tabElements = document.body.querySelectorAll(this.getClassName());
+        if (tabElements.length == 0 ) { return []}
+
+        var switcher = tabElements[0],
             tabLinks = switcher.querySelectorAll("li a[section]");
 
         return tabLinks;

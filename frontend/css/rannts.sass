@@ -6,6 +6,9 @@ $link-color-hover: #bd141c
 $link-color-visited: #bd14a7
 $rannts-font-size: 1.2em
 
+$footer-padding: 40px 20px
+$nav-padding: 20px
+
 
 // Mixins
 =rannts-link-color($color)
@@ -37,6 +40,7 @@ $rannts-font-size: 1.2em
 
 .footer
   font-size: $rannts-font-size
+  padding: $footer-padding
 
   .level-left
     a
@@ -47,6 +51,21 @@ $rannts-font-size: 1.2em
 .nav-main
   font-size: $rannts-font-size
 
+.nav-left
+  padding-left: $nav-padding
+
+.nav-main
+  padding-right: $nav-padding
+
++desktop
+  .nav-left
+    padding-left: 0
+  .nav-main
+    padding-right: 0
+
++mobile
+  .nav-main
+    padding-right: 0
 
 #logo
   font-family: "Lato", sans-serif
