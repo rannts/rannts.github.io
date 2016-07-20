@@ -13,7 +13,6 @@ ENV TERM linux
 RUN set -x && \
     apt-get -qq update && \
     apt-get -y install -qq apt-utils && \
-    apt-get -y dist-upgrade && \
     apt-get -y install -qq \
         libffi-dev \
         make \
@@ -35,9 +34,6 @@ RUN set -x  && \
     rm -rf /var/lib/apt/lists/* && \
     dpkgArch="$(dpkg --print-architecture | awk -F- '{ print $NF }')" && \
     wget -O /usr/local/bin/gosu "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch" && \
-    wget -O /usr/local/bin/gosu.asc "https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-$dpkgArch.asc" && \
-    export GNUPGHOME="$(mktemp -d)" && \
-    rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc && \
     chmod +x /usr/local/bin/gosu && \
     gosu nobody true
 
