@@ -16,6 +16,11 @@
             "icon": "fa-paper-plane"
         },
         {
+            "href": "https://github.com/rannts",
+            "title": "GitHub",
+            "icon": "fa-github"
+        },
+        {
             "href": "http://creativecommons.org/licenses/by-nc-sa/3.0",
             "title": "CC BY-NC-SA 3.0",
             "icon": "fa-creative-commons"
