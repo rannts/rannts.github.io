@@ -67,3 +67,6 @@ theme/output
 node_modules
 assets
 .tern-port
+
+# Lektor build directory
+output/
