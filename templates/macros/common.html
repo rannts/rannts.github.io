@@ -13,7 +13,7 @@
                 <span></span>
             </span>
 
-            <div class="nav-right nav-mobile">
+            <div class="nav-right nav-menu">
                 {% for item in bag("main-nav")["items"] %}
                     <a class="nav-item{% if item.url == "/" + active %} is-active{% endif %}" href="{{ item.url|url }}" title="{{ item.title }}">
                         {{ item.title }}
