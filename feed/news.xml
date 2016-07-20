@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">News</title>
   <id>urn:uuid:b72852b9-e362-351c-b642-482a0d852aed</id>
-  <updated>2016-07-10T00:30:12Z</updated>
+  <updated>2016-07-20T07:56:12Z</updated>
   <link href="http://rannts.ru/news/" />
   <link href="http://rannts.ru/news@atom/news/feed/news.xml" rel="self" />
   <author>
@@ -12,7 +12,7 @@
   <entry xml:base="http://rannts.ru/news/2016/7/initial-commit/">
     <title type="text">Initial commit</title>
     <id>urn:uuid:70654864-f600-3e72-bd49-e7804967ceb7</id>
-    <updated>2016-07-10T00:30:12Z</updated>
+    <updated>2016-07-20T07:56:12Z</updated>
     <link href="http://rannts.ru/news/2016/7/initial-commit/" />
     <author>
       <name></name>
