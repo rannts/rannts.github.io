@@ -3,7 +3,7 @@
 rannts is a meetup of Python community of Nizhny Novgorod. This is a
 static website for [rannts.ru](http://rannts.ru).
 
-This site is build with [Lektor](https://www.getlektor.com),
+This site is built with [Lektor](https://www.getlektor.com),
 using [Gulp](http://gulpjs.com), [SASS](http://sass-lang.com) and
 [Vanilla.js](http://vanilla-js.com). If you are interested in hacking on
 the code, please read documentation on these tools.
