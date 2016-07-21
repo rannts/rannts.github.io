@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">News</title>
-  <id>urn:uuid:b72852b9-e362-351c-b642-482a0d852aed</id>
+  <id>urn:uuid:8c65e4c6-3028-3dbe-b75b-8c30f9966465</id>
   <updated>2016-07-20T07:56:12Z</updated>
   <link href="http://rannts.ru/news/" />
   <link href="http://rannts.ru/news@atom/news/feed/news.xml" rel="self" />
@@ -11,7 +11,7 @@
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.2">Lektor Atom Plugin</generator>
   <entry xml:base="http://rannts.ru/news/2016/7/initial-commit/">
     <title type="text">Initial commit</title>
-    <id>urn:uuid:70654864-f600-3e72-bd49-e7804967ceb7</id>
+    <id>urn:uuid:3b9fc83a-4cc7-363d-9ae9-0931a674d684</id>
     <updated>2016-07-20T07:56:12Z</updated>
     <link href="http://rannts.ru/news/2016/7/initial-commit/" />
     <author>
