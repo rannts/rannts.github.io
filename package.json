@@ -18,11 +18,14 @@
     "gulp-cli": "^1.2.1",
     "gulp-concat": "^2.6.0",
     "gulp-html-minifier": "^0.1.8",
-    "gulp-optipng": "0.0.2",
+    "gulp-imagemin": "^3.0.2",
     "gulp-postcss": "^6.1.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^1.5.4",
+    "imagemin-gifsicle": "^5.1.0",
+    "imagemin-mozjpeg": "^6.0.0",
+    "imagemin-zopfli": "^5.0.0",
     "minimist": "^1.2.0",
     "npm-check-updates": "^2.7.2"
   }

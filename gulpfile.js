@@ -8,7 +8,10 @@ var args = require("minimist")(process.argv.slice(2)),
     cssnano = require("cssnano"),
     gulp = require("gulp"),
     htmlmin = require("gulp-html-minifier"),
-    optipng = require("gulp-optipng"),
+    imagemin = require("gulp-imagemin"),
+    imagemin_zopfli = require("imagemin-zopfli"),
+    imagemin_mozjpeg = require("imagemin-mozjpeg"),
+    imagemin_gifsicle = require("imagemin-gifsicle"),
     path = require("path"),
     postcss = require("gulp-postcss"),
     rename = require("gulp-rename"),
@@ -78,10 +81,12 @@ gulp.task("bundle_css", function() {
 
 
 gulp.task("bundle_images", function() {
-    var options = ["-o2"];
+    var gifPlugin = imagemin_gifsicle({"optimizationLevel": 3}),
+        pngPlugin = imagemin_zopfli({"more": true}),
+        jpegPlugin = imagemin_mozjpeg();
 
-    return gulp.src(path.join(SOURCE_IMG, "**.png"))
-        .pipe(optipng(options))
+    return gulp.src(path.join(SOURCE_IMG, "**"))
+        .pipe(imagemin([gifPlugin, pngPlugin, jpegPlugin]))
         .pipe(gulp.dest(ASSETS_IMG));
 });
 
