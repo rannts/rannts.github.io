@@ -1,0 +1,26 @@
+/* TEAM */
+
+    BDFL: Sergey Arkhipov
+    Twitter: @9seconds
+    From: Nizhniy Novgorod, Russia
+
+    Emacs hivemind: Artem Malyshev
+    Twitter: @proofit404
+    From: Nizhniy Novgorod, Russia
+
+/* THANKS */
+
+    We would like to thank all our speakers!
+
+{% for speaker in site.query("/speakers") %}
+    {{ speaker.first_name }} {{ speaker.last_name }}
+{%- endfor %}
+
+
+    Also, we would like to thank great IT52.info team.
+    You rock, guys!
+
+/* SITE */
+    Language: Russian
+    Doctype: HTML5
+    IDE: Neovim
