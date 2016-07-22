@@ -10,6 +10,8 @@
 
 ROOT_DIR     := "$(strip $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST)))))"
 TARGET       := "$(CURDIR)/output"
+NODE_DIR     := "$(ROOT_DIR)/node_modules"
+NCU          := "$(NODE_DIR)/npm-check-updates/bin/ncu"
 GULP_FLAG    := gulp
 DOCKER_IMAGE := rannts
 DOCKER_PORT  := 5000
@@ -79,6 +81,12 @@ python:
 node:
 	@cd "$(ROOT_DIR)" && \
 		npm install
+
+node_update:
+	@$(NCU) -a
+
+node_update_nbc:
+	@$(NCU) -at
 
 clean:
 	@rm -rf "$(HOME)/.cache/lektor" && \
