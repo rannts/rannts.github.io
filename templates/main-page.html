@@ -21,7 +21,7 @@
 {% macro render_meetups() %}
     {%
         set unfinished = site.query("/meetups").filter(
-            (F._model == "meetup").and(F.finished == False)).order_by("-date").first()
+            (F._model == "meetup").and(F.finished != True)).order_by("-date").first()
     %}
     {%
         set finished = site.query("/meetups").filter(
