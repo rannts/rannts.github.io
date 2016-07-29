@@ -15,8 +15,8 @@
 
             <div id="nav-menu" class="nav-right nav-menu">
                 {% for item in bag("main-nav")["items"] %}
-                    <a class="nav-item{% if item.url == "/" + active %} is-active{% endif %}" href="{{ item.url|url }}" title="{{ item.title }}">
-                        {{ item.title }}
+                    <a class="nav-item{% if item.url == "/" + active %} is-active{% endif %}" href="{{ item.url|url }}" title="{{ item.title|typography }}">
+                        {{ item.title|typography }}
                     </a>
                 {% endfor %}
             </div>
@@ -34,10 +34,10 @@
         <div class="hero-body">
             <div class="container">
                 {% if title %}
-                    <h1 class="title">{{ title }}</h1>
+                    <h1 class="title">{{ title|typography }}</h1>
                 {% endif %}
                 {% if title %}
-                    <h2 class="subtitle">{{ subtitle }}</h2>
+                    <h2 class="subtitle">{{ subtitle|typography }}</h2>
                 {% endif %}
             </div>
         </div>

@@ -6,11 +6,11 @@
 
 
 {% macro place(meetup) %}
-    <p>Место проведения:
+    <p>
         {% if this.place %}
-            {{ macros_meetup.place_url(this) }}
+            Место проведения: {{ macros_meetup.place_url(this) }}
         {% else %}
-            пока что не определено.
+            Место проведения пока что не определено.
         {% endif %}
     </p>
 
@@ -40,7 +40,7 @@
                 {{ macros_meetup.widget_registration(this) }}
 
                 {% if this.description %}
-                    {{ this.description }}
+                    {{ this.description|typography }}
                 {% else %}
                     <p>К сожалению, подробностей про митап пока что нет.</p>
                 {% endif %}

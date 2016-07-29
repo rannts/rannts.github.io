@@ -33,7 +33,7 @@
                             </a>
                         </span>
                     {% endif %}
-                    <a href="{{ talk|url }}">{{ talk.title }}</a>
+                    <a href="{{ talk|url }}">{{ talk.title|typography }}</a>
                 </li>
             {% endfor %}
         </ul>
