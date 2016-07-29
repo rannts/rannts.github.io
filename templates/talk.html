@@ -32,7 +32,7 @@
                 {{ macros_meetup.widget_slides(this, "meetup-slides") }}
 
                 {% if this.description %}
-                    {{ this.description }}
+                    {{ this.description|typography }}
                 {% elif not (this.video or (this.slides and this.slides.url)) %}
                     <p>К сожалению, подробностей про выступление пока что нет.</p>
                 {% endif %}

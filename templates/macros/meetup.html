@@ -47,7 +47,7 @@
 
 {% macro widget_talks_section(name, talks, expand) %}
     {% if talks %}
-        <h3>{{ name }}</h3>
+        <h3>{{ name|typography }}</h3>
         {% for talk in talks %}
             <div class="columns">
                 {{ widget_talk(talk, expand) }}
@@ -63,7 +63,7 @@
     </div>
 
     <div class="column">
-        <h4><a href="{{ talk|url }}">{{ talk.title }}</a></h4>
+        <h4><a href="{{ talk|url }}">{{ talk.title|typography }}</a></h4>
 
         <h5>
             {{ macros_speaker.speaker_name(talk.speaker) }}
@@ -74,7 +74,7 @@
             {{ widget_slides(talk) }}
         {% endif%}
 
-        {{ talk.description }}
+        {{ talk.description|typography }}
 
         {% if expand and talk.video %}
             {{ talk.video.url|oembed(urlize_all=False, maxwidth=640) }}
@@ -104,13 +104,13 @@
     {% if meetup.map_url %}
         <a href="{{ meetup.map_url }}">{{ meetup.place }}</a>
     {% else %}
-        {{ meetup.place }}
+        {{ meetup.place|typography }}
     {% endif %}
 {% endmacro %}
 
 
 {% macro company_name(talk) %}
     {% if talk.company %}
-        ({{ talk.company }})
+        ({{ talk.company|typography }})
     {% endif %}
 {% endmacro %}
