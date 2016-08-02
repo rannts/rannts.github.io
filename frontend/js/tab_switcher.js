@@ -14,26 +14,38 @@
     }
 
     TabSwitcher.prototype.install = function() {
-        var tabLinks = this.findTabLinks(),
+        var self = this,
+            tabLinks = this.findTabLinks(),
             selector = "section[id^=" + this.classPrefix + "]",
             sections = document.querySelectorAll(selector);
 
-        for (var idx = 0, length = tabLinks.length; idx < length; idx++) {
-            this.installSwitcher(tabLinks[idx], tabLinks, sections);
-        }
+        Array.prototype.forEach.call(tabLinks, function(el) {
+            self.installSwitcher(el, tabLinks, sections);
+        });
     };
 
     TabSwitcher.prototype.activate = function() {
-        var selector = this.getClassName() + " li.is-active a",
-            link = document.body.querySelector(selector);
+        var currentHash = window.location.hash,
+            linkSelector = "";
+
+        if (currentHash) {
+            linkSelector = "li a[section=" + currentHash.split("#")[1] + "]";
+        } else {
+            linkSelector = this.getClassName() + " li.is-active a"
+        }
+
+        this.activateTab(linkSelector)
+    };
+
+    TabSwitcher.prototype.activateTab = function(linkSelector) {
+        var link = document.body.querySelector(linkSelector);
 
         if (link) {
-            var event = new MouseEvent("click", {
+            link.dispatchEvent(new MouseEvent("click", {
                 "view": window,
                 "bubbles": true,
                 "cancelable": true
-            });
-            link.dispatchEvent(event);
+            }));
         }
     };
 
@@ -63,6 +75,7 @@
         linkElement.addEventListener("click", function() {
             self.toggleActiveClass(linkElement, links);
             self.toggleActiveSection(sectionElement, sections);
+            self.processHash(sectionName);
 
             return false;
         });
@@ -80,6 +93,11 @@
             el.style.display = "none";
         });
         active.style.display = "block";
+    };
+
+    TabSwitcher.prototype.processHash = function(sectionName) {
+        window.location.href = "#" + sectionName;
+        history.pushState({}, document.title, window.location.href);
     };
 
 
