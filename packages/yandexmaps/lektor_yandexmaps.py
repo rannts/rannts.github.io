@@ -64,9 +64,8 @@ class YandexmapsPlugin(Plugin):
         url = parse.urlsplit(value)
         query = parse.parse_qs(url.query)
         identifier = query["um"][-1].split(":")[-1]
-        source_type = query["source"][-1]
 
-        code = self.build_code(identifier, source_type)
+        code = self.build_code(identifier, "constructor")
         if ctx.autoescape:
             code = jinja2.Markup(code)
 
