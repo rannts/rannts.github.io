@@ -1,6 +1,6 @@
 number: 12
 ---
-date: 2016-08-13 15:00
+date: 2016-08-13 14:30
 ---
 description:
 
@@ -20,3 +20,5 @@ description:
 map_url: https://yandex.ru/maps/?um=constructor:TRq9HljunwwKS3gJ0lkaUzTaOUIt-jNt&source=constructorLink
 ---
 place: Конгресс-холл отеля Ока, зал "Ока-стандарт 1"
+---
+it52_url: https://www.it52.info/events/2016-08-13-rannts-12
