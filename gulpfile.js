@@ -44,7 +44,7 @@ gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
 // Tasks for lektor-gulp
 gulp.task("server_spawn", ["build_static", "watch"]);
 gulp.task("before_build_all", ["build_static"]);
-gulp.task("after_build_all", ["process_html"]);
+gulp.task("after_build_all", ["compress_images", "process_html"]);
 
 
 gulp.task("watch", function() {
@@ -81,13 +81,25 @@ gulp.task("bundle_css", function() {
 
 
 gulp.task("bundle_images", function() {
+    return gulp.src(path.join(SOURCE_IMG, "**"))
+        .pipe(gulp.dest(ASSETS_IMG));
+});
+
+
+gulp.task("compress_images", function() {
     var gifPlugin = imagemin_gifsicle({"optimizationLevel": 3}),
         pngPlugin = imagemin_zopfli({"more": true}),
-        jpegPlugin = imagemin_mozjpeg();
+        jpegPlugin = imagemin_mozjpeg(),
+        srcPaths = [
+            path.join(RESULT_DIR, "**", "*.jpg"),
+            path.join(RESULT_DIR, "**", "*.jpeg"),
+            path.join(RESULT_DIR, "**", "*.png"),
+            path.join(RESULT_DIR, "**", "*.gif")
+        ];
 
-    return gulp.src(path.join(SOURCE_IMG, "**"))
+    return gulp.src(srcPaths)
         .pipe(imagemin([gifPlugin, pngPlugin, jpegPlugin]))
-        .pipe(gulp.dest(ASSETS_IMG));
+        .pipe(gulp.dest(RESULT_DIR));
 });
 
 
