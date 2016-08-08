@@ -1,0 +1,16 @@
+speaker: nikolay-kugaevskiy
+---
+company: dudes.io
+---
+date: 2016-08-13 17:50
+---
+description:
+
+* [OpenAPI](https://openapis.org/) – консорциум стандартизации API. 
+* Документирование API с помощью [Swagger](http://swagger.io/).
+* Инструменты для работы с документацией API.
+* Пишем автотесты для тестирования схемы ответа API.
+---
+talk_type: main
+---
+title: Документация и автотестирование схемы API c помощью OpenAPI
