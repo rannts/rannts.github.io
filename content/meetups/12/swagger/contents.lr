@@ -14,3 +14,5 @@ description:
 talk_type: main
 ---
 title: Документация и автотестирование схемы API c помощью OpenAPI
+---
+slides: http://slides.kugaevsky.ru/swagger.html
