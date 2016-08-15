@@ -2,13 +2,26 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">News</title>
   <id>urn:uuid:8c65e4c6-3028-3dbe-b75b-8c30f9966465</id>
-  <updated>2016-08-08T10:28:00Z</updated>
+  <updated>2016-08-15T20:58:00Z</updated>
   <link href="http://rannts.ru/news/" />
   <link href="http://rannts.ru/news@atom/news/feed/news.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.2">Lektor Atom Plugin</generator>
+  <entry xml:base="http://rannts.ru/news/2016/8/videos-from-12-meetup/">
+    <title type="text">Видео с 12 митапа</title>
+    <id>urn:uuid:aee86750-c0eb-30dd-b994-2988184bec9c</id>
+    <updated>2016-08-15T20:58:00Z</updated>
+    <link href="http://rannts.ru/news/2016/8/videos-from-12-meetup/" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;p&gt;В субботу прошел &lt;a href=&quot;/meetups/12&quot;&gt;12 митап&lt;/a&gt;, и прошел он отлично!&lt;/p&gt;
+&lt;p&gt;Большое спасибо всем, кто пришел, кто что-то вынес из докладов, кто просто пришел поболтать, кто пришел случайно и особенно тем, кто ушел недовольным. Вас пришло больше, чем мы ожидали, и это только радует. Отдельное спасибо отличным парням из &lt;a href=&quot;https://mymarilyn.ru/&quot;&gt;Marilyn Systems Russia&lt;/a&gt;, которые приехали большой компанией и, надеемся, остались довольны выходными.&lt;/p&gt;
+&lt;p&gt;Все видео выложены, их можно найти на &lt;a href=&quot;/meetups/12/#talks&quot;&gt;странице с докладами&lt;/a&gt;. А можно и просто включить &lt;a href=&quot;https://www.youtube.com/playlist?list=PLxVVhpZX_gJfp18qmd5BDvUoXu5gnv-Ew&quot;&gt;полный плейлист с Ютуба&lt;/a&gt;.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://rannts.ru/news/2016/8/meetup-12/">
     <title type="text">12 митап</title>
     <id>urn:uuid:df7ad188-d768-3f99-9930-864aa982c80b</id>
