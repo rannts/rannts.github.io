@@ -58,3 +58,30 @@
 {% macro format_date(date) %}
     {{ date|datetimeformat("d MMMM YYYY, HH:mm") }}
 {% endmacro %}
+
+
+{% macro format_opg_page(title, description="", video="") %}
+    {{ format_ogp_tag("url", "."|url(external=True)) }}
+    {{ format_ogp_tag("type", "website") }}
+    {{ format_ogp_tag("site_name", config.values.PROJECT.name) }}
+    {{ format_ogp_tag("locale", "ru_RU") }}
+    {{ format_ogp_tag("image", "/static/images/logo.png"|url(external=True)) }}
+    {{ format_ogp_tag("image:type", "image/png") }}
+
+    {% if title %}
+        {{ format_ogp_tag("title", title) }}
+    {% endif %}
+
+    {% if description %}
+        {{ format_ogp_tag("description", description) }}
+    {% endif %}
+
+    {% if video %}
+        {{ format_ogp_tag("video", video.url|youtube_code) }}
+    {% endif %}
+{% endmacro %}
+
+
+{% macro format_ogp_tag(type, value) %}
+    <meta {{ {"property": "og:%s"|format(type), "content": value}|xmlattr }}>
+{% endmacro %}

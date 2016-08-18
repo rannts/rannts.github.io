@@ -10,6 +10,16 @@
 {% endblock %}
 
 
+{% block opengraph %}
+    {{
+        macros_common.format_opg_page(
+            this.title,
+            this.text|typography|striptags|trim|truncate(140)
+        )
+    }}
+{% endblock %}
+
+
 {% block content %}
     {% call macros_common.widget_hero_block(
         "news", "news", this.title, macros_common.format_date(this.date)) %}

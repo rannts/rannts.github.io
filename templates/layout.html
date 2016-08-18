@@ -1,10 +1,20 @@
+{% import "macros/common.html" as macros_common %}
+
 <!DOCTYPE html>
-<html lang="ru">
+<html prefix="og: http://ogp.me/ns#" lang="ru">
     <head>
         {% block head %}
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
             <meta name="viewport" content="width=device-width, initial-scale=1">
+            {% block opengraph %}
+                {{
+                    macros_common.format_opg_page(
+                        config.values.PROJECT.name,
+                        "Нижегородское Python-сообщество"
+                    )
+                }}
+            {% endblock %}
 
             <title>
                {% block title %}

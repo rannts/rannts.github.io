@@ -11,6 +11,11 @@
 {% endblock %}
 
 
+{% block opengraph %}
+    {{ macros_common.format_opg_page("Митапы", "Хахатоны и бухкэмпы") }}
+{% endblock %}
+
+
 {% block content %}
     {% call macros_common.widget_hero_block("meetups", "meetup", "Митапы", "Хахатоны и бухкэмпы") %}
     {% endcall %}

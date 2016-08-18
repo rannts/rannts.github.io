@@ -20,6 +20,16 @@
 {% endmacro %}
 
 
+{% block opengraph %}
+    {{
+        macros_common.format_opg_page(
+            "Информация",
+            "Разные полезные буквы для участников, посетителей и HR'ов"
+        )
+    }}
+{% endblock %}
+
+
 {% block content %}
     {% call macros_common.widget_hero_block("information", "information", "Информация", "Разные полезные буквы для участников, посетителей и HR'ов") %}
         <li class="is-active"><a section="about">О митапе</a></li>

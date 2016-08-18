@@ -10,6 +10,15 @@
 {% endblock %}
 
 
+{% block opengraph %}
+    {{
+        macros_common.format_opg_page(
+            macros_speaker.speaker_name(this._id), "Список докладов"
+        )
+    }}
+{% endblock %}
+
+
 {% block content %}
     {% call macros_common.widget_hero_block("speakers", "people", macros_speaker.speaker_name(this._id)) %}
     {% endcall %}

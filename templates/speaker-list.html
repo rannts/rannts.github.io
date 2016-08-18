@@ -17,6 +17,11 @@
 {% endblock %}
 
 
+{% block opengraph %}
+    {{ macros_common.format_opg_page("Люди", "Те, кто") }}
+{% endblock %}
+
+
 {% block content %}
     {% call macros_common.widget_hero_block("speakers", "people", "Люди", "Те, кто") %}
     {% endcall %}

@@ -25,6 +25,16 @@
 {% endblock %}
 
 
+{% block opengraph %}
+    {{
+        macros_common.format_opg_page(
+            "rannts #" ~ this.number,
+            this.description|typography|striptags|trim|truncate(140),
+        )
+    }}
+{% endblock %}
+
+
 {% block content %}
     {% call macros_common.widget_hero_block(
             "meetups", "meetup", macros_meetup.number(this.number),
