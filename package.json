@@ -13,7 +13,7 @@
   "devDependencies": {
     "autoprefixer": "^6.4.0",
     "bulma": "^0.1.2",
-    "cssnano": "^3.7.3",
+    "cssnano": "^3.7.4",
     "gulp": "^3.9.1",
     "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.6.0",
