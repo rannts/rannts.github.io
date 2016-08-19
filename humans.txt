@@ -43,4 +43,4 @@
 /* SITE */
     Language: Russian
     Doctype: HTML5
-    IDE: Neovim
+    IDE: Neovim, tmux
