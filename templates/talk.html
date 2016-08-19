@@ -52,7 +52,9 @@
                 {% endif %}
 
                 {% if this.video %}
-                    {{ this.video.url|oembed(urlize_all=False, maxwidth=960) }}
+                    <div class="video-responsive-wrapper">
+                        {{ this.video.url|oembed(urlize_all=False, maxwidth=960) }}
+                    </div>
                 {% endif %}
             </div>
         </div>
