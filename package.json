@@ -11,7 +11,7 @@
     "url": "https://github.com/rannts/rannts.github.io/issues"
   },
   "devDependencies": {
-    "autoprefixer": "^6.4.0",
+    "autoprefixer": "^6.4.1",
     "bulma": "^0.1.2",
     "cssnano": "^3.7.4",
     "gulp": "^3.9.1",
@@ -19,7 +19,7 @@
     "gulp-concat": "^2.6.0",
     "gulp-html-minifier": "^0.1.8",
     "gulp-imagemin": "^3.0.3",
-    "gulp-postcss": "^6.1.1",
+    "gulp-postcss": "^6.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^2.0.0",
