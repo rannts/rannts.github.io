@@ -1,17 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title type="text">News</title>
-  <id>urn:uuid:b72852b9-e362-351c-b642-482a0d852aed</id>
-  <updated>2016-11-02T14:55:00Z</updated>
+  <id>urn:uuid:8c65e4c6-3028-3dbe-b75b-8c30f9966465</id>
+  <updated>2016-11-07T20:50:00Z</updated>
   <link href="http://rannts.ru/news/" />
   <link href="http://rannts.ru/news@atom/news/feed/news.xml" rel="self" />
   <author>
     <name></name>
   </author>
   <generator uri="https://github.com/ajdavis/lektor-atom" version="0.2">Lektor Atom Plugin</generator>
+  <entry xml:base="http://rannts.ru/news/2016/11/meetup-14/">
+    <title type="text">14 митап</title>
+    <id>urn:uuid:74da13e4-a9d4-35e5-a7c2-ea5b782752bf</id>
+    <updated>2016-11-07T20:50:00Z</updated>
+    <link href="http://rannts.ru/news/2016/11/meetup-14/" />
+    <author>
+      <name></name>
+    </author>
+    <content type="html">&lt;p&gt;После долгого перерыва объявляем о &lt;a href=&quot;/meetups/14&quot;&gt;14 митапе&lt;/a&gt;. Надеемся, что долгий перерыв стоил того: митап будет большой, 5 докладов; к нам едет Python core developer, который расскажет из первых рук обо всей асинхронщине, которая творится сейчас в Python. Кроме того, будет пицца, свэг, возможно подарки - нам же исполнилось 2 года!&lt;/p&gt;
+&lt;p&gt;Обязательно &lt;a href=&quot;https://goo.gl/forms/Mrh6bHEIr8cfcpj63&quot;&gt;зарегистрируйтесь&lt;/a&gt;. Это нужно в первую очередь для того, чтобы нам самим знать, как минимум, сколько наклеек заказывать.&lt;/p&gt;
+</content>
+  </entry>
   <entry xml:base="http://rannts.ru/news/2016/11/our-chat/">
     <title type="text">Наш чат</title>
-    <id>urn:uuid:7affa871-bb8d-3673-a3b4-d48a93f03842</id>
+    <id>urn:uuid:8aef6317-d4c4-362c-a971-e76759c3ef11</id>
     <updated>2016-11-02T14:55:00Z</updated>
     <link href="http://rannts.ru/news/2016/11/our-chat/" />
     <author>
@@ -23,7 +35,7 @@
   </entry>
   <entry xml:base="http://rannts.ru/news/2016/9/meetup-13-videos/">
     <title type="text">Видео с 13 митапа</title>
-    <id>urn:uuid:8066708e-b429-300b-ab56-30e66c790d08</id>
+    <id>urn:uuid:787d4b8e-5731-3e70-a7d3-4cc1760cc38c</id>
     <updated>2016-09-21T08:28:00Z</updated>
     <link href="http://rannts.ru/news/2016/9/meetup-13-videos/" />
     <author>
@@ -35,7 +47,7 @@
   </entry>
   <entry xml:base="http://rannts.ru/news/2016/9/meetup-13/">
     <title type="text">13 митап</title>
-    <id>urn:uuid:c844d513-a441-3e94-86d7-380402c88395</id>
+    <id>urn:uuid:71f8c493-d065-3b3d-bd58-9b90ea220083</id>
     <updated>2016-09-08T21:34:00Z</updated>
     <link href="http://rannts.ru/news/2016/9/meetup-13/" />
     <author>
@@ -47,7 +59,7 @@
   </entry>
   <entry xml:base="http://rannts.ru/news/2016/8/videos-from-12-meetup/">
     <title type="text">Видео с 12 митапа</title>
-    <id>urn:uuid:e25da79d-eedb-3c44-9860-f094e9e5e6c4</id>
+    <id>urn:uuid:aee86750-c0eb-30dd-b994-2988184bec9c</id>
     <updated>2016-08-15T20:58:00Z</updated>
     <link href="http://rannts.ru/news/2016/8/videos-from-12-meetup/" />
     <author>
@@ -60,7 +72,7 @@
   </entry>
   <entry xml:base="http://rannts.ru/news/2016/8/meetup-12/">
     <title type="text">12 митап</title>
-    <id>urn:uuid:e8ba5446-3708-300d-b148-65ecb9b8cbc4</id>
+    <id>urn:uuid:df7ad188-d768-3f99-9930-864aa982c80b</id>
     <updated>2016-08-08T10:28:00Z</updated>
     <link href="http://rannts.ru/news/2016/8/meetup-12/" />
     <author>
@@ -73,7 +85,7 @@
   </entry>
   <entry xml:base="http://rannts.ru/news/2016/7/initial-commit/">
     <title type="text">Initial commit</title>
-    <id>urn:uuid:70654864-f600-3e72-bd49-e7804967ceb7</id>
+    <id>urn:uuid:3b9fc83a-4cc7-363d-9ae9-0931a674d684</id>
     <updated>2016-07-20T07:56:12Z</updated>
     <link href="http://rannts.ru/news/2016/7/initial-commit/" />
     <author>
