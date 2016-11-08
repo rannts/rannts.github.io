@@ -10,6 +10,9 @@
   "bugs": {
     "url": "https://github.com/rannts/rannts.github.io/issues"
   },
+  "scripts": {
+    "gulp": "gulp"
+  },
   "devDependencies": {
     "autoprefixer": "^6.5.2",
     "bulma": "^0.2.3",
