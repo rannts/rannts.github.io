@@ -138,6 +138,18 @@ $nav-padding: 20px
     .subtitle
       font-size: 1em
 
+  .tabs li
+    border-radius: 5px 5px 0 0
+    border-bottom-radius: 0
+
+    &:not(.is-active):hover
+      background-color: rgba($grey-lighter, 0.3)
+    &.is-active
+      background-color: rgba($white, 0.7)
+      a
+        color: $grey-dark
+
+
 .is-meetup
   @extend .is-dark
   +rannts-hero-bg("meetup-bg.png")
