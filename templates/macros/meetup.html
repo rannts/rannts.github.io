@@ -24,6 +24,8 @@
             Будет проходить в {{ place_url(meetup) }}
         {% endif %}
     {% endif %}
+
+    {{ macros_common.add_to_google_calendar(meetup) }}
 {% endmacro %}
 
 
