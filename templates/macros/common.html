@@ -88,8 +88,10 @@
 
 
 {% macro add_to_google_calendar(element) %}
-    <div class="add-to-calendar">
-        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
-        <a href="{{ element|generate_google_calendar_link }}">Добавить в Google Calendar</a>
-    </div>
+    {% if not element.finished %}
+        <span class="add-to-calendar-widget">
+            <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+            <a href="{{ element|generate_google_calendar_link }}">Добавить в Google Calendar</a>
+        </span>
+    {% endif %}
 {% endmacro %}
