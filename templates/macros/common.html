@@ -85,3 +85,11 @@
 {% macro format_ogp_tag(type, value) %}
     <meta {{ {"property": "og:%s"|format(type), "content": value}|xmlattr }}>
 {% endmacro %}
+
+
+{% macro add_to_google_calendar(element) %}
+    <div class="add-to-calendar">
+        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+        <a href="{{ element|generate_google_calendar_link }}">Добавить в Google Calendar</a>
+    </div>
+{% endmacro %}
