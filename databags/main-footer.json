@@ -6,11 +6,6 @@
             "icon": "fa-envelope"
         },
         {
-            "href": "https://rannts.ru/events.ics",
-            "title": "Events",
-            "icon": "fa-calendar"
-        },
-        {
             "href": "https://vk.com/rannts",
             "title": "ВКонтакте",
             "icon": "fa-vk"

@@ -39,6 +39,12 @@
                             <div class="level-left">
                                 <p class="level-item">2014–2016</p>
 
+                                <a class="level-item" href="{{ "@events"|url }}" title="Календарь">
+                                    <span class="icon is-small">
+                                        <i class="fa fa-calendar"></i>
+                                    </span>
+                                </a>
+
                                 {% for item in bag("main-footer")["items"] %}
                                     <a class="level-item" href="{{ item.href }}" title="{{ item.title }}">
                                         <span class="icon is-small">
