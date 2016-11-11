@@ -16,6 +16,7 @@ var args = require("minimist")(process.argv.slice(2)),
     postcss = require("gulp-postcss"),
     rename = require("gulp-rename"),
     sass = require("gulp-sass"),
+    typograph = require("gulp-typograf"),
     uglifyjs = require("gulp-uglify");
 
 
@@ -124,8 +125,17 @@ gulp.task("process_html", function() {
         sortClassName: true,
         useShortDoctype: true
     };
+    var typo_options = {
+        "lang": "ru",
+        "enable": [
+            "common/space/delLeadingBlanks",
+            "ru/money/ruble",
+            "ru/optalign/*"
+        ]
+    };
 
     return gulp.src(path.join(RESULT_DIR, "**/*.html"))
+        .pipe(typograph(typo_options))
         .pipe(htmlmin(options))
         .pipe(gulp.dest(RESULT_DIR));
 });
