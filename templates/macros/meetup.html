@@ -29,7 +29,9 @@
         {% endif %}
     {% endif %}
 
-    {{ macros_common.add_to_google_calendar(meetup) }}
+    {% if (meetup.date or meetup.place) and not meetup.finished %}
+        {{ macros_common.add_to_google_calendar(meetup) }}
+    {% endif %}
 {% endmacro %}
 
 
