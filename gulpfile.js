@@ -38,6 +38,9 @@ var SOURCE = args.source || DEFAULT_SOURCE,
     ASSETS_IMG = args.assets_img || path.join(DEFAULT_ASSETS, SOURCE_IMG_DIR);
 
 
+require("events").EventEmitter.prototype._maxListeners = 100;
+
+
 gulp.task("default", ["build_static", "watch"]);
 gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
 
