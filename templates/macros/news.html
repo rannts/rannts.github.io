@@ -24,7 +24,7 @@
 
 
 {% macro render_title(news) %}
-    <h1 class="title"><a href="{{ news|url }}">{{ news.title|typography }}</a></h1>
+    <h1 class="title"><a href="{{ news|url }}">{{ news.title }}</a></h1>
 {% endmacro %}
 
 
@@ -35,8 +35,8 @@
 
 {% macro render_content(news, full) %}
     {% if full %}
-        {{ news.text|typography }}
+        {{ news.text }}
     {% else %}
-        {{ news.text.html|postcut(news|url)|typography }}
+        {{ news.text.html|postcut(news|url) }}
     {% endif %}
 {% endmacro %}

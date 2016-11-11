@@ -18,7 +18,7 @@
     {{
         macros_common.format_opg_page(
             this.title,
-            this.text|typography|striptags|trim|truncate(140)
+            this.text|striptags|trim|truncate(140)
         )
     }}
 {% endblock %}

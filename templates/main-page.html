@@ -109,7 +109,7 @@
 {% macro render_meetup_speaker(talk, finished) %}
     {{ macros_speaker.speaker_name(talk.speaker) }} —
     {% if finished %}
-        <a href="{{ talk|url }}">{{ talk.title|typography }}</a>
+        <a href="{{ talk|url }}">{{ talk.title }}</a>
     {% else %}
         <em>{{ talk.title }}</em>
     {% endif %}

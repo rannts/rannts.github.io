@@ -33,7 +33,7 @@
     {{
         macros_common.format_opg_page(
             "rannts #" ~ this.number,
-            this.description|typography|striptags|trim|truncate(140),
+            this.description|striptags|trim|truncate(140),
         )
     }}
 {% endblock %}
@@ -54,7 +54,7 @@
                 {{ macros_meetup.widget_registration(this) }}
 
                 {% if this.description %}
-                    {{ this.description|typography }}
+                    {{ this.description }}
                 {% else %}
                     <p>К сожалению, подробностей про митап пока что нет.</p>
                 {% endif %}
