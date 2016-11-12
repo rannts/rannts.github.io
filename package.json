@@ -31,6 +31,7 @@
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-zopfli": "^5.0.0",
     "minimist": "^1.2.0",
-    "npm-check-updates": "^2.8.6"
+    "npm-check-updates": "^2.8.6",
+    "postcss-fixes": "^1.4.2"
   }
 }

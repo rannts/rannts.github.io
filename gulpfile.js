@@ -14,6 +14,7 @@ var args = require("minimist")(process.argv.slice(2)),
     imagemin_gifsicle = require("imagemin-gifsicle"),
     path = require("path"),
     postcss = require("gulp-postcss"),
+    postcss_fixes = require("postcss-fixes"),
     rename = require("gulp-rename"),
     sass = require("gulp-sass"),
     typograph = require("gulp-typograf"),
@@ -72,6 +73,7 @@ gulp.task("bundle_js", function() {
 
 gulp.task("bundle_css", function() {
     var processors = [
+        postcss_fixes(),
         autoprefixer({browsers: ["last 3 version"]}),
         cssnano()
     ];
