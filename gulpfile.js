@@ -3,6 +3,7 @@
 
 // Modules import
 var args = require("minimist")(process.argv.slice(2)),
+    addsrc = require("gulp-add-src"),
     autoprefixer = require("autoprefixer"),
     concat = require("gulp-concat"),
     cssnano = require("cssnano"),
@@ -15,7 +16,6 @@ var args = require("minimist")(process.argv.slice(2)),
     path = require("path"),
     postcss = require("gulp-postcss"),
     postcss_fixes = require("postcss-fixes"),
-    rename = require("gulp-rename"),
     sass = require("gulp-sass"),
     typograph = require("gulp-typograf"),
     uglifyjs = require("gulp-uglify");
@@ -80,8 +80,10 @@ gulp.task("bundle_css", function() {
 
     return gulp.src(path.join(SOURCE_CSS, "main.sass"))
         .pipe(sass().on("error", sass.logError))
+        .pipe(addsrc.append(
+            path.join("node_modules", "typograf", "dist", "typograf.css")))
+        .pipe(concat("main.css"))
         .pipe(postcss(processors))
-        .pipe(rename("main.css"))
         .pipe(gulp.dest(ASSETS_CSS));
 });
 
