@@ -10,15 +10,8 @@
 
 
 {% macro place(meetup) %}
-    <p>
-        {% if this.place %}
-            Место проведения: {{ macros_meetup.place_url(this) }}
-        {% else %}
-            Место проведения пока что не определено.
-        {% endif %}
-    </p>
-
     {% if this.map_url %}
+        <h2>Место проведения на карте</h2>
         {{ this.map_url.url|yandexmaps }}
     {% endif %}
 {% endmacro %}
@@ -43,12 +36,9 @@
     {% call macros_common.widget_hero_block(
             "meetups", "meetup", macros_meetup.number(this.number),
             macros_meetup.widget_map_subheader(this)) %}
-        <li class="is-active"><a section="about">О митапе</a></li>
-        <li><a section="talks">Доклады</a></li>
-        <li><a section="place">Место проведения</a></li>
     {% endcall %}
 
-    <section id="section-tabs-about" class="section section-item">
+    <section class="section">
         <div class="container">
             <div class="content">
                 {{ macros_meetup.widget_registration(this) }}
@@ -62,18 +52,18 @@
         </div>
     </section>
 
-    <section id="section-tabs-talks" class="section section-item">
+    <section class="section">
         <div class="container">
             <div class="content">
-                {{ macros_meetup.widget_talks(this, True) }}
+              {{ place(this) }}
             </div>
         </div>
     </section>
 
-    <section id="section-tabs-place" class="section section-item">
+    <section class="section">
         <div class="container">
             <div class="content">
-              {{ place(this) }}
+                {{ macros_meetup.widget_talks(this, True) }}
             </div>
         </div>
     </section>
