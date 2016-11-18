@@ -57,7 +57,7 @@
     {% if talks %}
         <h3>{{ name }}</h3>
         {% for talk in talks %}
-            <div class="columns">
+            <div class="columns is-mobile">
                 {{ widget_talk(talk, expand) }}
             </div>
         {% endfor %}
@@ -66,7 +66,7 @@
 
 
 {% macro widget_talk(talk, expand) %}
-    <div class="column is-one-quarter">
+    <div class="column is-2">
         {{ talk.date|datetimeformat("HH:mm") }}
     </div>
 
