@@ -2,20 +2,21 @@
 // Also, tuned for lektor-gulp
 
 // Modules import
-var args = require("minimist")(process.argv.slice(2)),
-    addsrc = require("gulp-add-src"),
+var addsrc = require("gulp-add-src"),
+    args = require("minimist")(process.argv.slice(2)),
     autoprefixer = require("autoprefixer"),
     concat = require("gulp-concat"),
     cssnano = require("cssnano"),
     gulp = require("gulp"),
     htmlmin = require("gulp-html-minifier"),
+    imagemin_gifsicle = require("imagemin-gifsicle"),
+    imagemin_mozjpeg = require("imagemin-mozjpeg"),
     imagemin = require("gulp-imagemin"),
     imagemin_zopfli = require("imagemin-zopfli"),
-    imagemin_mozjpeg = require("imagemin-mozjpeg"),
-    imagemin_gifsicle = require("imagemin-gifsicle"),
     path = require("path"),
-    postcss = require("gulp-postcss"),
     postcss_fixes = require("postcss-fixes"),
+    postcss = require("gulp-postcss"),
+    purify = require("gulp-purifycss"),
     sass = require("gulp-sass"),
     typograph = require("gulp-typograf"),
     uglifyjs = require("gulp-uglify");
@@ -49,7 +50,7 @@ gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
 // Tasks for lektor-gulp
 gulp.task("server_spawn", ["build_static", "watch"]);
 gulp.task("before_build_all", ["build_static"]);
-gulp.task("after_build_all", ["compress_images", "process_html"]);
+gulp.task("after_build_all", ["compress_images", "process_html", "process_css"]);
 
 
 gulp.task("watch", function() {
@@ -75,7 +76,6 @@ gulp.task("bundle_css", function() {
     var processors = [
         postcss_fixes(),
         autoprefixer({browsers: ["last 3 version"]}),
-        cssnano()
     ];
 
     return gulp.src(path.join(SOURCE_CSS, "main.sass"))
@@ -141,5 +141,19 @@ gulp.task("process_html", function() {
     return gulp.src(path.join(RESULT_DIR, "**/*.html"))
         .pipe(typograph(typo_options))
         .pipe(htmlmin(options))
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("process_css", ["process_html"], function () {
+    var source_css = path.join(RESULT_DIR, "**", "main.css"),
+        context = [
+            path.join(RESULT_DIR, "**", "*.js"),
+            path.join(RESULT_DIR, "**", "*.html")
+        ];
+
+    return gulp.src(path.join(RESULT_DIR, "**/main.css"))
+        .pipe(purify(context))
+        .pipe(postcss([cssnano()]))
         .pipe(gulp.dest(RESULT_DIR));
 });
