@@ -1,0 +1,11 @@
+speaker: denis-nagorniy
+---
+company: Intel
+---
+date: 2016-12-10 12:00
+---
+description: Расскажу почему мы делаем еще один Python, каковы основные проблемы Python’а для HPC. Покажу примеры эффективного применения [Intel® Distribution for Python](https://software.intel.com/en-us/intel-distribution-for-python) для вычислительных задач.
+---
+talk_type: main
+---
+title: Scaling out Python for HPC and Big Data
