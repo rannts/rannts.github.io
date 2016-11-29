@@ -16,11 +16,11 @@
   "devDependencies": {
     "autoprefixer": "^6.5.3",
     "bulma": "^0.2.3",
-    "cssnano": "^3.8.0",
+    "cssnano": "^3.8.1",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
     "gulp-cli": "^1.2.2",
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.1",
     "gulp-html-minifier": "^0.1.8",
     "gulp-imagemin": "^3.1.1",
     "gulp-postcss": "^6.2.0",
@@ -32,7 +32,7 @@
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-zopfli": "^5.0.0",
     "minimist": "^1.2.0",
-    "npm-check-updates": "^2.8.6",
+    "npm-check-updates": "^2.8.7",
     "postcss-fixes": "^1.4.2"
   }
 }
