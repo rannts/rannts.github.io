@@ -11,3 +11,5 @@ description:
 talk_type: main
 ---
 title: Django Channels - ответ современному вебу
+---
+slides: http://proofit404.github.io/talks/django-channels/slides/

@@ -11,3 +11,5 @@ description:
 talk_type: main
 ---
 title: Асинхронный веб сервер: зачем он нужен
+---
+slides: https://asvetlov.github.io/aiohttp-nizhny-2016/
