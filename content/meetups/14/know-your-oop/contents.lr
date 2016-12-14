@@ -1,0 +1,15 @@
+speaker: artem-malyshev
+---
+date: 2016-12-10 17:30
+---
+description:
+
+Немного о подходе к ООП в Python и о том, как можно работать с MRO. 
+---
+slides: http://proofit404.github.io/talks/know-your-oop/slides/#/
+---
+talk_type: lightning
+---
+title: Know Your OOP
+---
+video: https://www.youtube.com/watch?v=-pDN5IBMLvg
