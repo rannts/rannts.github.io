@@ -15,3 +15,5 @@ talk_type: main
 title: GUI тесты на чистом питоне: Win32, MS UI Automation и щепотка чёрной магии
 ---
 video: https://www.youtube.com/watch?v=mUsNjAzoUmo
+---
+slides: http://www.slideshare.net/VasilyRyabov/gui-win32-ms-ui-automation
