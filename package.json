@@ -14,25 +14,25 @@
     "gulp": "gulp"
   },
   "devDependencies": {
-    "autoprefixer": "^6.5.3",
-    "bulma": "^0.2.3",
-    "cssnano": "^3.9.0",
+    "autoprefixer": "^6.7.0",
+    "bulma": "^0.3.1",
+    "cssnano": "^3.10.0",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
     "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-html-minifier": "^0.1.8",
     "gulp-imagemin": "^3.1.1",
-    "gulp-postcss": "^6.2.0",
+    "gulp-postcss": "^6.3.0",
     "gulp-purifycss": "^0.2.0",
-    "gulp-sass": "^3.0.0",
-    "gulp-typograf": "^2.0.0",
-    "gulp-uglify": "^2.0.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-typograf": "^2.0.1",
+    "gulp-uglify": "^2.0.1",
     "imagemin-gifsicle": "^5.1.0",
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-zopfli": "^5.0.0",
     "minimist": "^1.2.0",
-    "npm-check-updates": "^2.8.8",
+    "npm-check-updates": "^2.8.9",
     "postcss-fixes": "^1.4.2"
   }
 }
