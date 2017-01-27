@@ -60,7 +60,10 @@
         {% if page == pagination.page %}
             <li class="current_page">{{ page }}</li>
         {% else %}
-            <li><a href="{{ ('@' ~ page)|url }}">{{ page }}</a></li>
+            <li>
+                <a href="{{ ('@' ~ page)|url }}">{{ page }}</a>
+                <link rel="prerender" href="{{ ('@' ~ page)|url }}">
+            </li>
         {% endif %}
     {% endif %}
 {% endmacro %}
