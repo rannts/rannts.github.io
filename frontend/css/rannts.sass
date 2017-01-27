@@ -42,25 +42,26 @@ $nav-padding: 20px
   font-size: $rannts-font-size
   padding: $footer-padding
 
-  .level-left
-    a
-      text-decoration: none
-      border-bottom-width: 0
+  +rannts-link()
+
+  a.level-item
+    +rannts-link-color(rgba($link-color-normal, 1))
+    &:visited
+      +rannts-link-color(rgba($link-color-visited, 1))
+    &:hover
+      +rannts-link-color($link-color-hover)
+
+    text-decoration: none
+    border-bottom-width: 0
 
 
-.nav-main
-  font-size: $rannts-font-size
-
-.nav-left
-  padding-left: $nav-padding
-
-.nav-main
-  padding-right: $nav-padding
+.nav-main .nav-item
+    font-size: $rannts-font-size
 
 +desktop
-  .nav-left
+  .nav-left a.nav-item
     padding-left: 0
-  .nav-main
+  .nav-main a.nav-item
     padding-right: 0
 
 +mobile
@@ -77,6 +78,8 @@ $nav-padding: 20px
 
 .section
   .pagination
+    +rannts-link()
+
     a
       min-width: 0
     li

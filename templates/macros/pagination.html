@@ -5,11 +5,11 @@
 {% macro widget_pagination(pagination) %}
     {% if pagination.pages > 1 %}
         <section class="section">
-            <div class="container has-text-centered pagination">
-                <ul>
+            <nav class="container is-centered pagination">
+                <ul class="pagination-list">
                     {{ render_pagination(pagination) }}
                 </ul>
-            </div>
+            </nav>
         </section>
     {% endif %}
 {% endmacro %}
