@@ -6,6 +6,7 @@ var addsrc = require("gulp-add-src"),
     args = require("minimist")(process.argv.slice(2)),
     autoprefixer = require("autoprefixer"),
     concat = require("gulp-concat"),
+    critical = require("critical").stream,
     cssnano = require("cssnano"),
     gulp = require("gulp"),
     htmlmin = require("gulp-html-minifier"),
@@ -50,7 +51,7 @@ gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
 // Tasks for lektor-gulp
 gulp.task("server_spawn", ["build_static", "watch"]);
 gulp.task("before_build_all", ["build_static"]);
-gulp.task("after_build_all", ["compress_images", "process_html", "process_css"]);
+gulp.task("after_build_all", ["compress_images", "process_html", "process_css", "critical_css"]);
 
 
 gulp.task("watch", function() {
@@ -112,31 +113,31 @@ gulp.task("compress_images", function() {
 
 
 gulp.task("process_html", function() {
-    var options = {
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        collapseInlineTagWhitespace: false,
-        decodeEntities: true,
-        removeAttributeQuotes: true,
-        removeComments: true,
-        removeEmptyAttributes: true,
-        removeEmptyElements: false, // required for burger menu
-        removeOptionalTags: true,
-        removeRedundantAttributes: true,
-        removeScriptTypeAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        sortAttributes: true,
-        sortClassName: true,
-        useShortDoctype: true
-    };
     var typo_options = {
-        "lang": "ru",
-        "enable": [
-            "common/space/delLeadingBlanks",
-            "ru/money/ruble",
-            "ru/optalign/*"
-        ]
-    };
+            "lang": "ru",
+            "enable": [
+                "common/space/delLeadingBlanks",
+                "ru/money/ruble",
+                "ru/optalign/*"
+            ]
+        },
+        options = {
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            collapseInlineTagWhitespace: false,
+            decodeEntities: true,
+            removeAttributeQuotes: true,
+            removeComments: true,
+            removeEmptyAttributes: true,
+            removeEmptyElements: false, // required for burger menu
+            removeOptionalTags: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            sortAttributes: true,
+            sortClassName: true,
+            useShortDoctype: true
+        };
 
     return gulp.src(path.join(RESULT_DIR, "**/*.html"))
         .pipe(typograph(typo_options))
@@ -145,7 +146,7 @@ gulp.task("process_html", function() {
 });
 
 
-gulp.task("process_css", ["process_html"], function () {
+gulp.task("process_css", function () {
     var source_css = path.join(RESULT_DIR, "**", "main.css"),
         context = [
             path.join(RESULT_DIR, "**", "*.js"),
@@ -155,5 +156,21 @@ gulp.task("process_css", ["process_html"], function () {
     return gulp.src(path.join(RESULT_DIR, "**/main.css"))
         .pipe(purify(context))
         .pipe(postcss([cssnano()]))
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("critical_css", ["process_css", "process_html"], function () {
+    var path_htmls = path.join(RESULT_DIR, "**", "*.html"),
+        critical_stream = critical({
+            base: RESULT_DIR,
+            inline: true,
+            minify: true,
+            css: [path.join(RESULT_DIR, "static", "css", "main.css")]
+        });
+
+    return gulp.src(path_htmls)
+        .pipe(critical_stream)
+        .on('error', function(err) { console.log(err.message); })
         .pipe(gulp.dest(RESULT_DIR));
 });
