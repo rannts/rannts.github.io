@@ -14,7 +14,7 @@
     "gulp": "gulp"
   },
   "devDependencies": {
-    "autoprefixer": "^6.7.0",
+    "autoprefixer": "^6.7.2",
     "bulma": "^0.3.1",
     "critical": "^0.8.1",
     "cssnano": "^3.10.0",
@@ -33,7 +33,7 @@
     "imagemin-mozjpeg": "^6.0.0",
     "imagemin-zopfli": "^5.0.0",
     "minimist": "^1.2.0",
-    "npm-check-updates": "^2.8.9",
+    "npm-check-updates": "^2.8.10",
     "postcss-fixes": "^1.4.2"
   }
 }
