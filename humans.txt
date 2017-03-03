@@ -40,6 +40,7 @@
     Дмитрий Фролов
     Павел Шалаев
     Кирилл Шипулин
+    Антон Шрамко
 
 
     Also, we would like to thank great IT52.info team.
