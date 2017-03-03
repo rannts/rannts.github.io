@@ -114,8 +114,8 @@ gulp.task("compress_images", function() {
 
 gulp.task("process_html", function() {
     var typo_options = {
-            "lang": "ru",
-            "enable": [
+            "locale": ["ru", "en_US"],
+            "enableRule": [
                 "common/space/delLeadingBlanks",
                 "ru/money/ruble",
                 "ru/optalign/*"
