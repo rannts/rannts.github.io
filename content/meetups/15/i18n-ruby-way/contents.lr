@@ -1,0 +1,15 @@
+speaker: nikolay-kugaevskiy
+---
+company: dudes.io
+---
+date: 2017-03-18 18:00:00
+---
+description: Доклад о том, как принято делать интернационализацию в Руби на примере гема [i18n](https://github.com/svenfuchs/i18n).
+---
+slides: http://slides.kugaevsky.ru/i18n-ruby-way.html#/
+---
+talk_type: lightning
+---
+title: I18n Ruby Way
+---
+video: https://www.youtube.com/watch?v=5HSv-AhlOQs

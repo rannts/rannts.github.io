@@ -9,3 +9,7 @@ description: Я расскажу о том, как мы начали путь п
 talk_type: main
 ---
 title: Асинхронный RPC с помощью Gevent и RabbitMQ
+---
+slides: https://www.slideshare.net/AleksandrMokrov/gevent-rabbit-rpc
+---
+video: https://www.youtube.com/watch?v=ZNVVlLL6Tks
