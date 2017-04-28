@@ -30,7 +30,7 @@ server_all: dependencies
 	@cd "$(ROOT_DIR)" && \
 		lektor server -f "$(GULP_FLAG)" -h 0.0.0.0
 
-build: dependencies
+build:
 	@cd "$(ROOT_DIR)" && \
 		lektor build -f "$(GULP_FLAG)" -O "$(TARGET)"
 
