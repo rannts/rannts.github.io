@@ -1,0 +1,20 @@
+---
+
+session_name: rannts
+start_directory: ./
+shell_command_before:
+  - pyenv activate rannts
+windows:
+  - window_name: server
+    focus: true
+    panes:
+      - make server_all
+  - window_name: vim
+    panes:
+      - vim
+  - window_name: shell1
+    panes:
+      - null
+  - window_name: shell1
+    panes:
+      - null
