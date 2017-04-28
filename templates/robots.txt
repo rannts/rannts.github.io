@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Host: rannts.ru
+sitemap: {{ '/sitemap.xml' | url(external=true) }}
