@@ -1,0 +1,11 @@
+speaker: alexander-mokrov
+---
+company: Positive Technologies
+---
+talk_type: main
+---
+title: Protobuf it!
+---
+date: 2017-05-20 15:30
+---
+description: Поговорим о том, что за зверь этот [Protocol Buffers](https://developers.google.com/protocol-buffers/) и зачем он вообще нужен. Рассмотрим где он может быть полезен, что может дать и с какими проблемами может познакомить. Посравниваем с конкурентами.
