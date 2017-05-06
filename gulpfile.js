@@ -127,7 +127,7 @@ gulp.task("optimize:html", ["optimize:html:minify", "optimize:css:critical"], fu
 gulp.task("optimize:images", function() {
     var gifPlugin = imagemin_gifsicle({"optimizationLevel": 3}),
         pngPlugin = imagemin_zopfli({"more": true}),
-        jpegPlugin = imagemin_mozjpeg(),
+        jpegPlugin = imagemin.jpegtran({progressive: true}),
         srcPaths = [
             path.join(RESULT_DIR, "**", "*.jpg"),
             path.join(RESULT_DIR, "**", "*.jpeg"),
@@ -136,8 +136,7 @@ gulp.task("optimize:images", function() {
         ];
 
     return gulp.src(srcPaths)
-        // .pipe(imagemin([gifPlugin, pngPlugin, jpegPlugin]))
-        .pipe(imagemin([gifPlugin, pngPlugin]))
+        .pipe(imagemin([gifPlugin, pngPlugin, jpegPlugin]))
         .pipe(gulp.dest(RESULT_DIR));
 });
 
