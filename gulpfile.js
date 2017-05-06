@@ -1,8 +1,9 @@
-// Gulpfile for rannts statics
-// Also, tuned for lektor-gulp
+// vim: set et sw=4 ts=4 foldmethod=marker:
 
-// Modules import
-var addsrc = require("gulp-add-src"),
+
+// Imports ========================================================= {{{
+
+const addsrc = require("gulp-add-src"),
     args = require("minimist")(process.argv.slice(2)),
     autoprefixer = require("autoprefixer"),
     concat = require("gulp-concat"),
@@ -20,17 +21,16 @@ var addsrc = require("gulp-add-src"),
     purify = require("gulp-purifycss"),
     sass = require("gulp-sass"),
     typograph = require("gulp-typograf"),
-    zopfli = require('gulp-zopfli'),
+    zopfli = require("gulp-zopfli"),
     uglifyjs = require("gulp-uglify");
 
+// }}}
+// Constants ======================================================= {{{
 
-// Constants
-var DEFAULT_SOURCE = "frontend",
+const DEFAULT_SOURCE = "frontend",
     DEFAULT_ASSETS = path.join("assets", "static");
 
-
-// Directories used for tasks
-var SOURCE = args.source || DEFAULT_SOURCE,
+const SOURCE = args.source || DEFAULT_SOURCE,
     SOURCE_JS_DIR = args.source_js_dir || "js",
     SOURCE_CSS_DIR = args.source_css_dir || "css",
     SOURCE_IMG_DIR = args.source_img_dir || "images",
@@ -42,17 +42,44 @@ var SOURCE = args.source || DEFAULT_SOURCE,
     ASSETS_CSS = args.assets_css || path.join(DEFAULT_ASSETS, SOURCE_CSS_DIR),
     ASSETS_IMG = args.assets_img || path.join(DEFAULT_ASSETS, SOURCE_IMG_DIR);
 
+// }}}
+// Initialization ================================================== {{{
 
 require("events").EventEmitter.prototype._maxListeners = 100;
 
+// }}}
 
-gulp.task("default", ["build_static", "watch"]);
-gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
+// Main tasks ====================================================== {{{
 
-// Tasks for lektor-gulp
-gulp.task("server_spawn", ["build_static", "watch"]);
-gulp.task("before_build_all", ["build_static"]);
-gulp.task("after_build_all", ["compress_images", "process_html", "process_css", "critical_css", "zopfli_css", "zopfli_html", "zopfli_js"]);
+gulp.task("default",
+    ["build_static", "watch"]);
+gulp.task("server_spawn",
+    ["default"]);
+gulp.task("build_static",
+    ["bundle:js", "bundle:css", "bundle:images"]);
+
+
+gulp.task("bundle:js", function() {
+    return gulp.src(path.join(SOURCE_JS, "**.js"))
+        .pipe(concat("main.js"))
+        .pipe(gulp.dest(ASSETS_JS));
+});
+
+
+gulp.task("bundle:css", function() {
+    return gulp.src(path.join(SOURCE_CSS, "main.sass"))
+        .pipe(sass().on("error", sass.logError))
+        .pipe(addsrc.append(
+            path.join("node_modules", "typograf", "dist", "typograf.css")))
+        .pipe(concat("main.css"))
+        .pipe(gulp.dest(ASSETS_CSS));
+});
+
+
+gulp.task("bundle:images", function() {
+    return gulp.src(path.join(SOURCE_IMG, "**"))
+        .pipe(gulp.dest(ASSETS_IMG));
+});
 
 
 gulp.task("watch", function() {
@@ -61,42 +88,43 @@ gulp.task("watch", function() {
     gulp.watch(SOURCE_IMG, ["bundle_images"]);
 });
 
+// }}}
+// Before 'build_all' ============================================== {{{
 
-gulp.task("bundle_js", function() {
-    var options = {
-        "mangle": true
-    };
+gulp.task("before_build_all",
+    ["build_static"]);
 
-    return gulp.src(path.join(SOURCE_JS, "**.js"))
-        .pipe(concat("main.js"))
-        .pipe(uglifyjs(options))
-        .pipe(gulp.dest(ASSETS_JS));
+// }}}
+// After 'build_all' =============================================== {{{
+
+gulp.task("after_build_all",
+    ["optimize_static"]);
+gulp.task("optimize_static",
+    ["optimize:js", "optimize:css", "optimize:images", "optimize:html"]);
+
+
+gulp.task("optimize:js", ["optimize:js:uglify"], function() {
+    return gulp.src(path.join(RESULT_DIR, "**", "*.js"))
+        .pipe(zopfli())
+        .pipe(gulp.dest(RESULT_DIR));
 });
 
 
-gulp.task("bundle_css", function() {
-    var processors = [
-        postcss_fixes(),
-        autoprefixer({browsers: ["last 3 version"]})
-    ];
-
-    return gulp.src(path.join(SOURCE_CSS, "main.sass"))
-        .pipe(sass().on("error", sass.logError))
-        .pipe(addsrc.append(
-            path.join("node_modules", "typograf", "dist", "typograf.css")))
-        .pipe(concat("main.css"))
-        .pipe(postcss(processors))
-        .pipe(gulp.dest(ASSETS_CSS));
+gulp.task("optimize:css", ["optimize:css:postcss", "optimize:css:purify", "optimize:css:critical"], function () {
+    return gulp.src(path.join(RESULT_DIR, "**", "*.css"))
+        .pipe(zopfli())
+        .pipe(gulp.dest(RESULT_DIR));
 });
 
 
-gulp.task("bundle_images", function() {
-    return gulp.src(path.join(SOURCE_IMG, "**"))
-        .pipe(gulp.dest(ASSETS_IMG));
+gulp.task("optimize:html", ["optimize:html:minify", "optimize:css:critical"], function () {
+    return gulp.src(path.join(RESULT_DIR, "**", "*.html"))
+        .pipe(zopfli())
+        .pipe(gulp.dest(RESULT_DIR));
 });
 
 
-gulp.task("compress_images", function() {
+gulp.task("optimize:images", function() {
     var gifPlugin = imagemin_gifsicle({"optimizationLevel": 3}),
         pngPlugin = imagemin_zopfli({"more": true}),
         jpegPlugin = imagemin_mozjpeg(),
@@ -113,7 +141,57 @@ gulp.task("compress_images", function() {
 });
 
 
-gulp.task("process_html", function() {
+gulp.task("optimize:js:uglify", function () {
+    var options = {"mangle": true};
+
+    return gulp.src(path.join(RESULT_DIR, "**.js"))
+        .pipe(uglifyjs(options))
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("optimize:css:postcss", function() {
+    var processors = [
+        postcss_fixes(),
+        autoprefixer({browsers: ["last 3 version"]})
+    ];
+
+    return gulp.src(path.join(RESULT_DIR, "**.css"))
+        .pipe(postcss(processors))
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("optimize:css:purify", ["optimize:css:postcss"], function () {
+    var context = [
+        path.join(RESULT_DIR, "**", "*.js"),
+        path.join(RESULT_DIR, "**", "*.html")
+    ];
+
+    return gulp.src(path.join(RESULT_DIR, "**/main.css"))
+        .pipe(purify(context))
+        .pipe(postcss([cssnano()]))
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("optimize:css:critical", ["optimize:css:purify", "optimize:html:minify"], function () {
+    var path_htmls = path.join(RESULT_DIR, "**", "*.html"),
+        critical_stream = critical({
+            base: RESULT_DIR,
+            inline: true,
+            minify: true,
+            css: [path.join(RESULT_DIR, "static", "css", "main.css")]
+        });
+
+    return gulp.src(path_htmls)
+        .pipe(critical_stream)
+        .on("error", function(err) { console.log(err.message); })
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("optimize:html:minify", function () {
     var typo_options = {
             "locale": ["ru", "en_US"],
             "enableRule": [
@@ -146,52 +224,4 @@ gulp.task("process_html", function() {
         .pipe(gulp.dest(RESULT_DIR));
 });
 
-
-gulp.task("process_css", function () {
-    var context = [
-        path.join(RESULT_DIR, "**", "*.js"),
-        path.join(RESULT_DIR, "**", "*.html")
-    ];
-
-    return gulp.src(path.join(RESULT_DIR, "**/main.css"))
-        .pipe(purify(context))
-        .pipe(postcss([cssnano()]))
-        .pipe(gulp.dest(RESULT_DIR));
-});
-
-
-gulp.task("critical_css", ["process_css", "process_html"], function () {
-    var path_htmls = path.join(RESULT_DIR, "**", "*.html"),
-        critical_stream = critical({
-            base: RESULT_DIR,
-            inline: true,
-            minify: true,
-            css: [path.join(RESULT_DIR, "static", "css", "main.css")]
-        });
-
-    return gulp.src(path_htmls)
-        .pipe(critical_stream)
-        .on("error", function(err) { console.log(err.message); })
-        .pipe(gulp.dest(RESULT_DIR));
-});
-
-
-gulp.task("zopfli_css", ["critical_css"], function () {
-    return gulp.src(path.join(RESULT_DIR, "**", "*.css"))
-        .pipe(zopfli())
-        .pipe(gulp.dest(RESULT_DIR));
-});
-
-
-gulp.task("zopfli_js", ["bundle_js"], function () {
-    return gulp.src(path.join(RESULT_DIR, "**", "*.js"))
-        .pipe(zopfli())
-        .pipe(gulp.dest(RESULT_DIR));
-});
-
-
-gulp.task("zopfli_html", ["process_html", "critical_css"], function () {
-    return gulp.src(path.join(RESULT_DIR, "**", "*.html"))
-        .pipe(zopfli())
-        .pipe(gulp.dest(RESULT_DIR));
-});
+// }}}
