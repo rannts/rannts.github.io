@@ -136,7 +136,8 @@ gulp.task("optimize:images", function() {
         ];
 
     return gulp.src(srcPaths)
-        .pipe(imagemin([gifPlugin, pngPlugin, jpegPlugin]))
+        // .pipe(imagemin([gifPlugin, pngPlugin, jpegPlugin]))
+        .pipe(imagemin([gifPlugin, pngPlugin]))
         .pipe(gulp.dest(RESULT_DIR));
 });
 
