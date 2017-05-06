@@ -32,7 +32,8 @@ server_all: dependencies
 
 build:
 	@cd "$(ROOT_DIR)" && \
-		lektor build -f "$(GULP_FLAG)" -O "$(TARGET)"
+		rm -rf "$(TARGET)" && \
+		lektor build --no-prune -f "$(GULP_FLAG)" -O "$(TARGET)"
 
 deploy: clean dependencies
 	@cd "$(ROOT_DIR)" && \

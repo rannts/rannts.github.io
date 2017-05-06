@@ -20,6 +20,7 @@ var addsrc = require("gulp-add-src"),
     purify = require("gulp-purifycss"),
     sass = require("gulp-sass"),
     typograph = require("gulp-typograf"),
+    zopfli = require('gulp-zopfli'),
     uglifyjs = require("gulp-uglify");
 
 
@@ -51,12 +52,12 @@ gulp.task("build_static", ["bundle_js", "bundle_css", "bundle_images"]);
 // Tasks for lektor-gulp
 gulp.task("server_spawn", ["build_static", "watch"]);
 gulp.task("before_build_all", ["build_static"]);
-gulp.task("after_build_all", ["compress_images", "process_html", "process_css", "critical_css"]);
+gulp.task("after_build_all", ["compress_images", "process_html", "process_css", "critical_css", "zopfli_css", "zopfli_html", "zopfli_js"]);
 
 
 gulp.task("watch", function() {
-    gulp.watch(path.join(SOURCE_JS, '**.js'), ["bundle_js"]);
-    gulp.watch(path.join(SOURCE_CSS, '**.sass'), ["bundle_css"]);
+    gulp.watch(path.join(SOURCE_JS, "**.js"), ["bundle_js"]);
+    gulp.watch(path.join(SOURCE_CSS, "**.sass"), ["bundle_css"]);
     gulp.watch(SOURCE_IMG, ["bundle_images"]);
 });
 
@@ -76,7 +77,7 @@ gulp.task("bundle_js", function() {
 gulp.task("bundle_css", function() {
     var processors = [
         postcss_fixes(),
-        autoprefixer({browsers: ["last 3 version"]}),
+        autoprefixer({browsers: ["last 3 version"]})
     ];
 
     return gulp.src(path.join(SOURCE_CSS, "main.sass"))
@@ -147,11 +148,10 @@ gulp.task("process_html", function() {
 
 
 gulp.task("process_css", function () {
-    var source_css = path.join(RESULT_DIR, "**", "main.css"),
-        context = [
-            path.join(RESULT_DIR, "**", "*.js"),
-            path.join(RESULT_DIR, "**", "*.html")
-        ];
+    var context = [
+        path.join(RESULT_DIR, "**", "*.js"),
+        path.join(RESULT_DIR, "**", "*.html")
+    ];
 
     return gulp.src(path.join(RESULT_DIR, "**/main.css"))
         .pipe(purify(context))
@@ -171,6 +171,27 @@ gulp.task("critical_css", ["process_css", "process_html"], function () {
 
     return gulp.src(path_htmls)
         .pipe(critical_stream)
-        .on('error', function(err) { console.log(err.message); })
+        .on("error", function(err) { console.log(err.message); })
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("zopfli_css", ["critical_css"], function () {
+    return gulp.src(path.join(RESULT_DIR, "**", "*.css"))
+        .pipe(zopfli())
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("zopfli_js", ["bundle_js"], function () {
+    return gulp.src(path.join(RESULT_DIR, "**", "*.js"))
+        .pipe(zopfli())
+        .pipe(gulp.dest(RESULT_DIR));
+});
+
+
+gulp.task("zopfli_html", ["process_html", "critical_css"], function () {
+    return gulp.src(path.join(RESULT_DIR, "**", "*.html"))
+        .pipe(zopfli())
         .pipe(gulp.dest(RESULT_DIR));
 });
