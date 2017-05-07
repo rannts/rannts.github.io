@@ -5,7 +5,7 @@
   "license": "CC-BY-3.0",
   "repository": "git@github.com:rannts/rannts.github.io.git",
   "engines": {
-    "node": ">=4.0 <6.0"
+    "node": ">=4.0 <8.0"
   },
   "bugs": {
     "url": "https://github.com/rannts/rannts.github.io/issues"
@@ -30,9 +30,7 @@
     "gulp-typograf": "^3.0.0",
     "gulp-uglify": "^2.1.2",
     "gulp-zopfli": "^1.0.0",
-    "imagemin-gifsicle": "^5.1.0",
-    "imagemin-mozjpeg": "^6.0.0",
-    "imagemin-zopfli": "^5.1.0",
+    "imagemin-pngout": "^2.0.0",
     "minimist": "^1.2.0",
     "npm-check-updates": "^2.11.0",
     "postcss-fixes": "^1.4.2"

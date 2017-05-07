@@ -11,10 +11,8 @@ const addsrc = require("gulp-add-src"),
     cssnano = require("cssnano"),
     gulp = require("gulp"),
     htmlmin = require("gulp-html-minifier"),
-    imagemin_gifsicle = require("imagemin-gifsicle"),
-    imagemin_mozjpeg = require("imagemin-mozjpeg"),
+    imagemin_pngout = require("imagemin-pngout")
     imagemin = require("gulp-imagemin"),
-    imagemin_zopfli = require("imagemin-zopfli"),
     path = require("path"),
     postcss_fixes = require("postcss-fixes"),
     postcss = require("gulp-postcss"),
@@ -125,24 +123,22 @@ gulp.task("optimize:html", ["optimize:html:minify", "optimize:css:critical"], fu
 
 
 gulp.task("optimize:images", function() {
-    var gifPlugin = imagemin_gifsicle({"optimizationLevel": 3}),
-        pngPlugin = imagemin_zopfli({"more": true}),
-        jpegPlugin = imagemin.jpegtran({progressive: true}),
+    const gifPlugin = imagemin.gifsicle(
+            {interlaced: true, optimizationLevel: 3}),
+        pngPlugin = imagemin_pngout({strategy: 0}),
         srcPaths = [
-            path.join(RESULT_DIR, "**", "*.jpg"),
-            path.join(RESULT_DIR, "**", "*.jpeg"),
             path.join(RESULT_DIR, "**", "*.png"),
             path.join(RESULT_DIR, "**", "*.gif")
         ];
 
     return gulp.src(srcPaths)
-        .pipe(imagemin([gifPlugin, pngPlugin, jpegPlugin]))
+        .pipe(imagemin([gifPlugin, pngPlugin]))
         .pipe(gulp.dest(RESULT_DIR));
 });
 
 
 gulp.task("optimize:js:uglify", function () {
-    var options = {"mangle": true};
+    const options = {"mangle": true};
 
     return gulp.src(path.join(RESULT_DIR, "**.js"))
         .pipe(uglifyjs(options))
@@ -151,7 +147,7 @@ gulp.task("optimize:js:uglify", function () {
 
 
 gulp.task("optimize:css:postcss", function() {
-    var processors = [
+    const processors = [
         postcss_fixes(),
         autoprefixer({browsers: ["last 3 version"]})
     ];
@@ -163,7 +159,7 @@ gulp.task("optimize:css:postcss", function() {
 
 
 gulp.task("optimize:css:purify", ["optimize:css:postcss"], function () {
-    var context = [
+    const context = [
         path.join(RESULT_DIR, "**", "*.js"),
         path.join(RESULT_DIR, "**", "*.html")
     ];
@@ -176,7 +172,7 @@ gulp.task("optimize:css:purify", ["optimize:css:postcss"], function () {
 
 
 gulp.task("optimize:css:critical", ["optimize:css:purify", "optimize:html:minify"], function () {
-    var path_htmls = path.join(RESULT_DIR, "**", "*.html"),
+    const path_htmls = path.join(RESULT_DIR, "**", "*.html"),
         critical_stream = critical({
             base: RESULT_DIR,
             inline: true,
@@ -192,7 +188,7 @@ gulp.task("optimize:css:critical", ["optimize:css:purify", "optimize:html:minify
 
 
 gulp.task("optimize:html:minify", function () {
-    var typo_options = {
+    const typo_options = {
             "locale": ["ru", "en_US"],
             "enableRule": [
                 "common/space/delLeadingBlanks",
