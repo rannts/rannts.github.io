@@ -1,0 +1,11 @@
+speaker: nikita-ladoshkin
+---
+company: Positive Technologies
+---
+date: 2017-05-20 17:20
+---
+description: Небольшой обзор [gRPC](http://www.grpc.io/) как дополнение к докладу про [/meetups/16/protobuf-it/](Protocol Buffers).
+---
+talk_type: lightning
+---
+title: gRPC
