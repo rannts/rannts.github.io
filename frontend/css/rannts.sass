@@ -155,7 +155,7 @@ $nav-padding: 20px
     &.is-active
       background-color: rgba($white, 0.7)
       a
-        color: $grey-dark
+        color: $grey-dark !important
 
 
 .add-to-calendar-widget
@@ -163,20 +163,27 @@ $nav-padding: 20px
   margin: 0.5em 0
 
 
-.is-meetup
+.hero-rannts-bg
   @extend .is-dark
+
+  a
+    color: $grey-lighter !important
+
+
+.is-meetup
+  @extend .hero-rannts-bg
   +rannts-hero-bg("meetup-bg.png")
 
 .is-news
-  @extend .is-dark
+  @extend .hero-rannts-bg
   +rannts-hero-bg("news-bg.png")
 
 .is-information
-  @extend .is-dark
+  @extend .hero-rannts-bg
   +rannts-hero-bg("information-bg.png")
 
 .is-people
-  @extend .is-dark
+  @extend .hero-rannts-bg
   +rannts-hero-bg("people-bg.png")
 
 .main-page

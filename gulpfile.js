@@ -81,9 +81,9 @@ gulp.task("bundle:images", function() {
 
 
 gulp.task("watch", function() {
-    gulp.watch(path.join(SOURCE_JS, "**.js"), ["bundle_js"]);
-    gulp.watch(path.join(SOURCE_CSS, "**.sass"), ["bundle_css"]);
-    gulp.watch(SOURCE_IMG, ["bundle_images"]);
+    gulp.watch(path.join(SOURCE_JS, "**", "*.js"), ["bundle:js"]);
+    gulp.watch(path.join(SOURCE_CSS, "**", "*.sass"), ["bundle:css"]);
+    gulp.watch(SOURCE_IMG, ["bundle:images"]);
 });
 
 // }}}
