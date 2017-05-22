@@ -14,7 +14,7 @@
     "gulp": "gulp"
   },
   "devDependencies": {
-    "autoprefixer": "^7.0.0",
+    "autoprefixer": "^7.1.1",
     "bulma": "^0.4.1",
     "critical": "^0.8.4",
     "cssnano": "^3.10.0",
@@ -28,11 +28,11 @@
     "gulp-purifycss": "^0.2.0",
     "gulp-sass": "^3.1.0",
     "gulp-typograf": "^3.0.0",
-    "gulp-uglify": "^2.1.2",
+    "gulp-uglify": "^3.0.0",
     "gulp-zopfli": "^1.0.0",
     "imagemin-pngout": "^2.0.0",
     "minimist": "^1.2.0",
-    "npm-check-updates": "^2.11.0",
+    "npm-check-updates": "^2.11.1",
     "postcss-fixes": "^1.4.2"
   }
 }

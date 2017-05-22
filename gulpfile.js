@@ -138,9 +138,9 @@ gulp.task("optimize:images", function() {
 
 
 gulp.task("optimize:js:uglify", function () {
-    const options = {"mangle": true};
+    const options = {mangle: true};
 
-    return gulp.src(path.join(RESULT_DIR, "**.js"))
+    return gulp.src(path.join(RESULT_DIR, "**", "*.js"))
         .pipe(uglifyjs(options))
         .pipe(gulp.dest(RESULT_DIR));
 });
@@ -164,7 +164,7 @@ gulp.task("optimize:css:purify", ["optimize:css:postcss"], function () {
         path.join(RESULT_DIR, "**", "*.html")
     ];
 
-    return gulp.src(path.join(RESULT_DIR, "**/main.css"))
+    return gulp.src(path.join(RESULT_DIR, "**", "main.css"))
         .pipe(purify(context))
         .pipe(postcss([cssnano()]))
         .pipe(gulp.dest(RESULT_DIR));
