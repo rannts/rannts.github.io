@@ -1,4 +1,236 @@
-// Main SASS file for the rannts
+@import "bulma"
+@import "vars"
+@import "mixins"
 
-@import "framework"
-@import "rannts"
+
++base-link()
+
+
+.nav-main
+  height: $navigation-top-height
+
+  a
+    border: 0
+    color: $grey
+
+    &:visited
+      color: $grey
+    &:hover
+      color: $grey-dark
+
+  .nav-item
+    font-size: $base-font-size
+  .is-active, a.nav-item:hover
+    text-decoration: underline
+
+  +desktop
+    .nav-left a.nav-item:first-child
+      padding-left: 0
+    .nav-main a.nav-item:last-child
+      padding-right: 0
+
+  +mobile
+    padding-right: 0
+    padding-left: 0.7em
+
+
+.footer
+  font-size: $base-font-size
+  padding: $footer-padding
+
+  +mobile
+    display: none
+
+  a.level-item
+    text-decoration: none
+    border-bottom-width: 0
+
+    &:visited
+      color: $link-color-normal
+    &:hover
+      color: $link-color-hover
+
+
+.hero
+  .hero-body
+    .title
+      font-size: 3em
+
+    .subtitle
+      font-size: 1em
+
+      .add-to-calendar-widget a
+        margin-left: 5px
+
+  .tabs li
+    border-radius: 5px 5px 0 0
+    border-bottom-radius: 0
+
+    &:not(.is-active):hover
+      background-color: rgba($grey-lighter, 0.3)
+
+    &.is-active
+      background-color: rgba($white, 0.7)
+
+      a
+        color: $grey-dark !important
+
+
+.is-meetup
+  +hero-style("meetup-bg.png")
+
+
+.is-news
+  +hero-style("news-bg.png")
+
+
+.is-information
+  +hero-style("information-bg.png")
+
+
+.is-people
+  +hero-style("people-bg.png")
+
+
+.section
+  font-size: $base-font-size
+
+  .pagination
+    margin: -1em auto
+    font-size: 1.2em
+
+    a
+      min-width: 0
+
+    li
+      display: inline-block
+      margin-left: 0.3em
+      margin-right: 0.3em
+
+      &.current_page
+        font-size: 1.6em
+
+  .content
+    .title
+      font-size: 1.8em
+      font-weight: normal
+      margin-bottom: 0.3em
+
+    .subtitle
+      margin-top: 0
+      font-size: 0.8em
+      color: $grey-dark
+
+    .meetup-registration-link,
+    .meetup-slides
+      font-style: oblique
+      margin-bottom: 2em
+
+      a
+        font-style: normal
+
+    .news-cut
+      &::before
+        content: "↴ "
+        color: $grey-light
+
+    code
+      background-color: #fff6cd
+      padding: 0 5px
+      color: $grey-darker
+
+    h4
+      font-size: 1.2em
+      margin-bottom: 0.5em
+
+    h5
+      font-size: 0.8em
+      color: $grey-dark
+
+
+.section-item
+  display: none
+
+  p.is-small
+    font-size: 0.8em
+
+
+.main-page
+  .title
+    font-size: 2em
+    margin-bottom: 1.8em
+
+  .content
+    font-size: 0.9em
+    margin-bottom: 3em
+
+    .subtitle
+      color: $grey
+
+
+.add-to-calendar-widget
+  display: block
+  margin: 0.5em 0
+
+
+.video-responsive-wrapper
+  position: relative
+  padding-bottom: 56.25%
+  padding-top: 30px
+  height: 0
+  overflow: hidden
+
+  iframe, object, embed
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+
+
+
+#logo
+  font-family: "Lato", sans-serif
+  font-size: 2.2em
+
+  a
+    text-decoration: none
+
+
+#main-page-meetups
+  .subtitle
+    +base-link(0.5)
+
+  .delimiter
+    font-size: 1.5em
+    margin-bottom: 0.5em
+    margin-top: -0.3em
+
+
+#speaker-list,
+#speaker-talks
+  ul
+    margin-left: 0
+    margin-bottom: 1em
+
+  li
+    list-style-type: none
+    position: relative
+
+  > li
+    padding-bottom: 3em
+
+    li
+        margin-left: 120px
+
+  .meetup-name
+    +base-link(0.3)
+
+    display: inline-block
+    position: absolute
+    margin-left: -120px
+
+
+#speaker-talks
+  li
+    margin-left: 120px

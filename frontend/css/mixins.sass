@@ -1,0 +1,30 @@
+@import "vars"
+
+
+=base-link-style($color, $border-opacity: 0.3)
+  color: $color
+  border-bottom: 1px rgba($color, $border-opacity) solid
+
+
+=base-link($opacity: 1, $normal: $link-color-normal, $visited: $link-color-visited, $hover: $link-color-hover)
+  a
+    +base-link-style(rgba($normal, $opacity))
+
+    &:visited
+      +base-link-style(rgba($visited, $opacity))
+
+    &:hover
+      +base-link-style(rgba($hover, $opacity))
+
+
+=hero-bg($picture, $opacity: 0.8)
+  background-image: url("/static/images/#{$picture}")
+  background-repeat: repeat
+  opacity: $opacity
+
+
+=hero-style($picture, $opacity: 0.8)
+  @extend .is-dark
+
+  +base-link(1, $grey-lighter, $grey-lighter, $grey-lighter)
+  +hero-bg($picture, $opacity)
