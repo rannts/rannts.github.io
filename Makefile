@@ -40,28 +40,28 @@ deploy: clean dependencies
 		lektor build -f "$(GULP_FLAG)" && \
 		lektor deploy production
 
-docker_build: docker_create
+docker_build:
 	@docker run \
 		-i \
 		-t \
 		--rm=true \
 		-v "$(ROOT_DIR)":/rannts \
-		-e LUID=$(shell id -u) \
+		-e UID=$(shell id -u) \
 		-w /rannts \
 		"$(DOCKER_IMAGE)" \
-		make build
+		/go sh -c 'make dependencies && make clean && make build'
 
-docker_server: docker_create
+docker_server:
 	@docker run \
 		-i \
 		-t \
 		--rm=true \
 		-v "$(ROOT_DIR)":/rannts \
-		-e LUID=$(shell id -u) \
+		-e UID=$(shell id -u) \
 		-w /rannts \
-		-p 5000:$(DOCKER_PORT)
+		-p 5000:$(DOCKER_PORT) \
 		"$(DOCKER_IMAGE)" \
-		make server_all
+		/go sh -c 'make dependencies && make clean && make server_all'
 
 docker_create:
 	@cd "$(ROOT_DIR)" && \
@@ -81,7 +81,7 @@ python:
 
 node:
 	@cd "$(ROOT_DIR)" && \
-		npm install
+		$(shell which yarn || which node) install
 
 node_update:
 	@$(NCU) -a
