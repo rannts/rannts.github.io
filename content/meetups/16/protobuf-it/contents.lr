@@ -9,3 +9,7 @@ title: Protobuf it!
 date: 2017-05-20 16:10
 ---
 description: Поговорим о том, что за зверь этот [Protocol Buffers](https://developers.google.com/protocol-buffers/) и зачем он вообще нужен. Рассмотрим где он может быть полезен, что может дать и с какими проблемами может познакомить. Посравниваем с конкурентами.
+---
+slides: https://www.slideshare.net/AleksandrMokrov/protobuf-it
+---
+video: https://www.youtube.com/watch?v=u0YtfatOFOQ
