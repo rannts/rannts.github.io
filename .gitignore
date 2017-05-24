@@ -70,3 +70,4 @@ assets
 
 # Lektor build directory
 output/
+yarn.lock
