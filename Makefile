@@ -81,7 +81,7 @@ python:
 
 node:
 	@cd "$(ROOT_DIR)" && \
-		$(shell which yarn || which node) install
+		$(shell which yarn || which npm) install
 
 node_update:
 	@$(NCU) -a
