@@ -7,3 +7,7 @@ description: Наверное, только очень талантливый п
 talk_type: main
 ---
 title: Как написать свой debugger
+---
+slides: http://proofit404.github.io/talks/homemade-debugger/slides/#/
+---
+video: https://www.youtube.com/watch?v=dynYzI5ZnQA
