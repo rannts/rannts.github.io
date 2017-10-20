@@ -1,0 +1,11 @@
+speaker: kirill-kuzminykh
+---
+company: ASD Technologies
+---
+date: 2017-11-11 14:30:00
+---
+description: Обзор инструемента для автоматизации сборки программ и подготовки окружения для их выполнения.
+---
+talk_type: main
+---
+title: zc.buildout
