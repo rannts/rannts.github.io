@@ -9,3 +9,7 @@ description: В этом докладе мы разберемся с архит�
 talk_type: main
 ---
 title: Kubernetes - вводная. Обзор архитектуры, деплой, печеньки
+---
+slides: https://docs.google.com/presentation/d/1kOus5QRNZ-mm24U3RrOtNBSQjV2DqDLP2Kd3uhCkY0k/present#slide=id.p
+---
+video: https://www.youtube.com/watch?v=2ZouKZh6DPo
