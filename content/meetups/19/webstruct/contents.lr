@@ -1,0 +1,11 @@
+speaker: nikita-varentsov
+---
+company: ScrapingHub
+---
+date: 2018-03-17 15:10:00
+---
+description: На этом докладе вы узнаете все про [Webstruct](https://github.com/scrapinghub/webstruct). Зачем он нужен? Как использовать для решения своих задач? Что входит в набор? Как работает? И как будет развиваться дальше?
+---
+talk_type: main
+---
+title: Webstruct - набор инструментов для извлечения именных сущностей из HTML
