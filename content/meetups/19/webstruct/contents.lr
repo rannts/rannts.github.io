@@ -1,4 +1,4 @@
-speaker: nikita-varentsov
+speaker: nikita-vostretsov
 ---
 company: ScrapingHub
 ---
@@ -9,3 +9,7 @@ description: На этом докладе вы узнаете все про [Web
 talk_type: main
 ---
 title: Webstruct - набор инструментов для извлечения именных сущностей из HTML
+---
+slides: https://speakerdeck.com/whalebothelmsman/webstruct-nabor-instrumientov-dlia-izvliechieniia-imiennykh-ghrupp
+---
+video: https://www.youtube.com/watch?v=7AqLVAaIJVE
